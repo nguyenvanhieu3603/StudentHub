@@ -2,7 +2,7 @@
 Yêu cầu
 
 Node.js: Phiên bản 16.x hoặc cao hơn.
-MongoDB: Local hoặc MongoDB Atlas.
+MongoDB: Local (MongoDB Compass).
 Git: Để clone repository.
 Gemini API Key: Đăng ký tại Google Cloud Console.
 
