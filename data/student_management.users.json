@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "685293673ae990e6ba0514a9"
+  },
+  "username": "Admin User",
+  "account": "admin@domain.com",
+  "password": "$2a$10$XbfMneQ8jE1MVqOm.jZNeegosYcHD32XYeFhLWVLfbVVWkX5Trblq",
+  "phone": null,
+  "address": null,
+  "sex": 0,
+  "dateBirth": null,
+  "role": "admin",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-06-18T10:22:31.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6852936c3ae990e6ba0514ac"
+  },
+  "username": "Lecturer User",
+  "account": "lecturer001@domain.com",
+  "password": "$2a$10$12imA1oPBaSwSdBzay31OO./iKwzFrvTZABpPcHfUoiBKEKR/Lotq",
+  "phone": null,
+  "address": null,
+  "sex": 0,
+  "dateBirth": null,
+  "role": "lecturer",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-06-18T10:22:36.850Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6853c4be337d210493642d7a"
+  },
+  "username": "Longhumg",
+  "account": "long@gmail.com",
+  "password": "$2a$10$BzGlyezh/DHXR0D6Fw6pKeWiNmWwz2p.X3idH2yuEnBCxo9ZgJGWe",
+  "phone": null,
+  "address": null,
+  "sex": 0,
+  "dateBirth": null,
+  "role": "lecturer",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-06-19T08:05:18.518Z"
+  },
+  "__v": 0
+}]

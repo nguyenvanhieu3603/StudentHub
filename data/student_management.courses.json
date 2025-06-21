@@ -1,0 +1,240 @@
+[{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529b5"
+  },
+  "maMonHoc": "CT101",
+  "tenMonHoc": "Chính trị Mác – Lênin",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529b6"
+  },
+  "maMonHoc": "CT102",
+  "tenMonHoc": "Tư tưởng Hồ Chí Minh",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529b7"
+  },
+  "maMonHoc": "CT103",
+  "tenMonHoc": "Đường lối cách mạng của Đảng CSVN",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529b8"
+  },
+  "maMonHoc": "CT104",
+  "tenMonHoc": "Pháp luật đại cương",
+  "tinChi": 2
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529b9"
+  },
+  "maMonHoc": "CT105",
+  "tenMonHoc": "Giáo dục thể chất",
+  "tinChi": 2
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529ba"
+  },
+  "maMonHoc": "CT106",
+  "tenMonHoc": "Giáo dục quốc phòng – an ninh",
+  "tinChi": 2
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529bb"
+  },
+  "maMonHoc": "CT107",
+  "tenMonHoc": "Toán cao cấp 1",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529bc"
+  },
+  "maMonHoc": "CT108",
+  "tenMonHoc": "Toán cao cấp 2",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529bd"
+  },
+  "maMonHoc": "CT109",
+  "tenMonHoc": "Vật lý đại cương",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529be"
+  },
+  "maMonHoc": "CT110",
+  "tenMonHoc": "Hóa học đại cương",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529bf"
+  },
+  "maMonHoc": "CT111",
+  "tenMonHoc": "Tiếng Anh cơ bản 1",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c0"
+  },
+  "maMonHoc": "CT112",
+  "tenMonHoc": "Tiếng Anh cơ bản 2",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c1"
+  },
+  "maMonHoc": "CT113",
+  "tenMonHoc": "Tin học đại cương",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c2"
+  },
+  "maMonHoc": "CT114",
+  "tenMonHoc": "Xác suất thống kê",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c3"
+  },
+  "maMonHoc": "CT115",
+  "tenMonHoc": "Kỹ năng mềm",
+  "tinChi": 2
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c4"
+  },
+  "maMonHoc": "CT116",
+  "tenMonHoc": "Cơ học kỹ thuật",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c5"
+  },
+  "maMonHoc": "CT117",
+  "tenMonHoc": "Sức bền vật liệu",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c6"
+  },
+  "maMonHoc": "CT118",
+  "tenMonHoc": "Vẽ kỹ thuật",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c7"
+  },
+  "maMonHoc": "CT119",
+  "tenMonHoc": "Địa chất đại cương",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c8"
+  },
+  "maMonHoc": "CT120",
+  "tenMonHoc": "Trắc địa đại cương",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529c9"
+  },
+  "maMonHoc": "CT121",
+  "tenMonHoc": "Cơ sở dữ liệu",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529ca"
+  },
+  "maMonHoc": "CT122",
+  "tenMonHoc": "Kỹ thuật lập trình",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529cb"
+  },
+  "maMonHoc": "CT123",
+  "tenMonHoc": "Cấu trúc dữ liệu và giải thuật",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529cc"
+  },
+  "maMonHoc": "CT124",
+  "tenMonHoc": "Mạng máy tính",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529cd"
+  },
+  "maMonHoc": "CT125",
+  "tenMonHoc": "Hệ điều hành",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529ce"
+  },
+  "maMonHoc": "CT126",
+  "tenMonHoc": "Phân tích thiết kế hệ thống",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529cf"
+  },
+  "maMonHoc": "CT127",
+  "tenMonHoc": "Công nghệ phần mềm",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529d0"
+  },
+  "maMonHoc": "CT128",
+  "tenMonHoc": "Kỹ thuật mỏ đại cương",
+  "tinChi": 4
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529d1"
+  },
+  "maMonHoc": "CT129",
+  "tenMonHoc": "Kinh tế tài nguyên thiên nhiên",
+  "tinChi": 3
+},
+{
+  "_id": {
+    "$oid": "6853d754ce6819fcb00529d2"
+  },
+  "maMonHoc": "CT130",
+  "tenMonHoc": "Địa tin học",
+  "tinChi": 4
+}]

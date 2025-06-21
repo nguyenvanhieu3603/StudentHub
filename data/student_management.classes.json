@@ -1,0 +1,330 @@
+[{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76571e"
+  },
+  "maLop": "LOP001",
+  "tenLop": "K22CNPM-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-19T10:50:41.592Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76571f"
+  },
+  "maLop": "LOP002",
+  "tenLop": "K22CNPM-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.720Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765720"
+  },
+  "maLop": "LOP003",
+  "tenLop": "K22CNTT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.720Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765721"
+  },
+  "maLop": "LOP004",
+  "tenLop": "K22CNTT-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-20T04:58:14.735Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765722"
+  },
+  "maLop": "LOP005",
+  "tenLop": "K22QTKD-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.720Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765723"
+  },
+  "maLop": "LOP006",
+  "tenLop": "K22QTKD-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.720Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765724"
+  },
+  "maLop": "LOP007",
+  "tenLop": "K22KT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.720Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765725"
+  },
+  "maLop": "LOP008",
+  "tenLop": "K22KT-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.720Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765726"
+  },
+  "maLop": "LOP009",
+  "tenLop": "K22TMDT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.720Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765727"
+  },
+  "maLop": "LOP010",
+  "tenLop": "K22DL-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-20T04:21:59.687Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765728"
+  },
+  "maLop": "LOP011",
+  "tenLop": "K22KTPM-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-20T04:10:36.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765729"
+  },
+  "maLop": "LOP012",
+  "tenLop": "K22TKĐH-A",
+  "soSinhVien": 3,
+  "createdAt": {
+    "$date": "2025-06-20T04:59:25.737Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76572a"
+  },
+  "maLop": "LOP013",
+  "tenLop": "K22KHDL-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-20T03:45:49.456Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76572b"
+  },
+  "maLop": "LOP014",
+  "tenLop": "K22HTTT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-20T04:13:33.259Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76572c"
+  },
+  "maLop": "LOP015",
+  "tenLop": "K23CNPM-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76572d"
+  },
+  "maLop": "LOP016",
+  "tenLop": "K23CNPM-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76572e"
+  },
+  "maLop": "LOP017",
+  "tenLop": "K23CNTT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76572f"
+  },
+  "maLop": "LOP018",
+  "tenLop": "K23CNTT-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765730"
+  },
+  "maLop": "LOP019",
+  "tenLop": "K23QTKD-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765731"
+  },
+  "maLop": "LOP020",
+  "tenLop": "K23QTKD-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765732"
+  },
+  "maLop": "LOP021",
+  "tenLop": "K23KT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765733"
+  },
+  "maLop": "LOP022",
+  "tenLop": "K23KT-B",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765734"
+  },
+  "maLop": "LOP023",
+  "tenLop": "K23TMDT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765735"
+  },
+  "maLop": "LOP024",
+  "tenLop": "K23DL-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765736"
+  },
+  "maLop": "LOP025",
+  "tenLop": "K23KTPM-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765737"
+  },
+  "maLop": "LOP026",
+  "tenLop": "K24CNPM-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765738"
+  },
+  "maLop": "LOP027",
+  "tenLop": "K24CNTT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb765739"
+  },
+  "maLop": "LOP028",
+  "tenLop": "K24QTKD-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76573a"
+  },
+  "maLop": "LOP029",
+  "tenLop": "K24KT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853cb0f5c8f1ca6eb76573b"
+  },
+  "maLop": "LOP030",
+  "tenLop": "K24TMDT-A",
+  "soSinhVien": 1,
+  "createdAt": {
+    "$date": "2025-06-21T07:53:04.721Z"
+  }
+}]

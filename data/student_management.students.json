@@ -1,0 +1,363 @@
+[{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248bc"
+  },
+  "maSV": "SV001",
+  "tenSV": "Nguyễn Văn An",
+  "lop": "K22CNPM-A",
+  "khoa": "Y dược",
+  "khoaHoc": 2022,
+  "image": "/images_sv/SV001_1750398945631.jpg",
+  "createdAt": {
+    "$date": "2025-06-20T03:39:01.435Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248bd"
+  },
+  "maSV": "SV002",
+  "tenSV": "Trần Thị Bình",
+  "lop": "K22CNPM-B",
+  "khoa": "Kinh tế",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248be"
+  },
+  "maSV": "SV003",
+  "tenSV": "Lê Văn Cường",
+  "lop": "K22CNTT-A",
+  "khoa": "Cơ khí",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248bf"
+  },
+  "maSV": "SV004",
+  "tenSV": "Phạm Thị Duyên",
+  "lop": "K22CNTT-B",
+  "khoa": "Điện tử",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c0"
+  },
+  "maSV": "SV005",
+  "tenSV": "Hoàng Văn Đông",
+  "lop": "K22QTKD-A",
+  "khoa": "Xây dựng",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c1"
+  },
+  "maSV": "SV006",
+  "tenSV": "Đỗ Thị Phương",
+  "lop": "K22QTKD-B",
+  "khoa": "Hóa học",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c2"
+  },
+  "maSV": "SV007",
+  "tenSV": "Vũ Văn Giang",
+  "lop": "K22KT-A",
+  "khoa": "Sinh học",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c3"
+  },
+  "maSV": "SV008",
+  "tenSV": "Bùi Thị Hạnh",
+  "lop": "K22KT-B",
+  "khoa": "Luật",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c4"
+  },
+  "maSV": "SV009",
+  "tenSV": "Ngô Văn Ích",
+  "lop": "K22TMDT-A",
+  "khoa": "Ngoại ngữ",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c5"
+  },
+  "maSV": "SV010",
+  "tenSV": "Đặng Thị Kiều",
+  "lop": "K22DL-A",
+  "khoa": "Y dược",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c6"
+  },
+  "maSV": "SV011",
+  "tenSV": "Trương Văn Lực",
+  "lop": "K22KTPM-A",
+  "khoa": "CNTT",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c7"
+  },
+  "maSV": "SV012",
+  "tenSV": "Nguyễn Thị Mai",
+  "lop": "K22TKĐH-A",
+  "khoa": "Kinh tế",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c8"
+  },
+  "maSV": "SV013",
+  "tenSV": "Phạm Văn Nam",
+  "lop": "K22KHDL-B",
+  "khoa": "Cơ khí",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248c9"
+  },
+  "maSV": "SV014",
+  "tenSV": "Lê Thị Oanh",
+  "lop": "K22HTTT-A",
+  "khoa": "Điện tử",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248ca"
+  },
+  "maSV": "SV015",
+  "tenSV": "Hoàng Văn Phúc",
+  "lop": "K23CNPM-A",
+  "khoa": "Xây dựng",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248cb"
+  },
+  "maSV": "SV016",
+  "tenSV": "Đỗ Thị Quỳnh",
+  "lop": "K23CNPM-B",
+  "khoa": "Hóa học",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248cc"
+  },
+  "maSV": "SV017",
+  "tenSV": "Vũ Văn Rạng",
+  "lop": "K23CNTT-A",
+  "khoa": "Sinh học",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248cd"
+  },
+  "maSV": "SV018",
+  "tenSV": "Bùi Thị Sương",
+  "lop": "K23CNTT-B",
+  "khoa": "Luật",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248ce"
+  },
+  "maSV": "SV019",
+  "tenSV": "Ngô Văn Tài",
+  "lop": "K23QTKD-A",
+  "khoa": "Ngoại ngữ",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248cf"
+  },
+  "maSV": "SV020",
+  "tenSV": "Đặng Thị Uyên",
+  "lop": "K23QTKD-B",
+  "khoa": "Y dược",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d0"
+  },
+  "maSV": "SV021",
+  "tenSV": "Trương Văn Vĩnh",
+  "lop": "K23KT-A",
+  "khoa": "CNTT",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d1"
+  },
+  "maSV": "SV022",
+  "tenSV": "Nguyễn Thị Xuân",
+  "lop": "K23KT-B",
+  "khoa": "Kinh tế",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d2"
+  },
+  "maSV": "SV023",
+  "tenSV": "Phạm Văn Yên",
+  "lop": "K23TMDT-A",
+  "khoa": "Cơ khí",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d3"
+  },
+  "maSV": "SV024",
+  "tenSV": "Lê Thị Zương",
+  "lop": "K23DL-A",
+  "khoa": "Điện tử",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d4"
+  },
+  "maSV": "SV025",
+  "tenSV": "Hoàng Văn Ân",
+  "lop": "K23KTPM-A",
+  "khoa": "Xây dựng",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d5"
+  },
+  "maSV": "SV026",
+  "tenSV": "Đỗ Thị Bích",
+  "lop": "K24CNPM-A",
+  "khoa": "Hóa học",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d6"
+  },
+  "maSV": "SV027",
+  "tenSV": "Vũ Văn Cảnh",
+  "lop": "K24CNTT-A",
+  "khoa": "Sinh học",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d7"
+  },
+  "maSV": "SV028",
+  "tenSV": "Bùi Thị Đào",
+  "lop": "K24QTKD-A",
+  "khoa": "Luật",
+  "khoaHoc": 2023,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d8"
+  },
+  "maSV": "SV029",
+  "tenSV": "Ngô Văn Đức",
+  "lop": "K24KT-A",
+  "khoa": "Ngoại ngữ",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6853e15ebb2a939a172248d9"
+  },
+  "maSV": "SV030",
+  "tenSV": "Đặng Thị Em",
+  "lop": "K24TMDT-A",
+  "khoa": "Y dược",
+  "khoaHoc": 2022,
+  "image": "/images_sv/default_student.jpg"
+},
+{
+  "_id": {
+    "$oid": "6854eaaddb9482ab390a878d"
+  },
+  "maSV": "SV031",
+  "tenSV": "aaa ffff aaa",
+  "lop": "K22TKĐH-A",
+  "khoa": "Luật",
+  "khoaHoc": 2022,
+  "image": "/images_sv/SV031_1750397996365.jpg",
+  "createdAt": {
+    "$date": "2025-06-20T04:59:25.733Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6854f471935d07d6c081e690"
+  },
+  "maSV": "SV032",
+  "tenSV": "ggg fff ddd",
+  "lop": "K22TKĐH-A",
+  "khoa": "Ngoại ngữ",
+  "khoaHoc": 2022,
+  "image": "/images_sv/SV032_1750398065825.jpg",
+  "createdAt": {
+    "$date": "2025-06-20T05:41:05.837Z"
+  },
+  "__v": 0
+}]
