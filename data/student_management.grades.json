@@ -1,1080 +1,1386 @@
 [{
   "_id": {
-    "$oid": "68550c65e7d855c62856e612"
+    "$oid": "685bd91e77eadf30156c77cb"
   },
   "maSV": "SV001",
   "maLop": "LOP001",
   "maMonHoc": "CT101",
-  "diemGK": 7.5,
-  "diemCK": 8,
-  "diemCC": 9,
+  "semester": "HK1-2022",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6,
   "status": 0,
-  "finalGrade": 7.9,
-  "letterGrade": "B",
+  "finalGrade": 6.3,
+  "letterGrade": "C",
   "createdAt": {
-    "$date": "2025-06-20T07:23:17.732Z"
-  },
-  "semester": "HK2-2025"
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
 },
 {
   "_id": {
-    "$oid": "68550cf8e7d855c62856e613"
-  },
-  "maSV": "SV001",
-  "maLop": "LOP001",
-  "maMonHoc": "CT106",
-  "diemGK": 8,
-  "diemCK": 7.5,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-20T07:25:44.651Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550cf8e7d855c62856e614"
+    "$oid": "685bd91e77eadf30156c77cc"
   },
   "maSV": "SV001",
   "maLop": "LOP001",
   "maMonHoc": "CT107",
-  "diemGK": 8,
-  "diemCK": 7.5,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-20T07:25:44.651Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550cf8e7d855c62856e615"
-  },
-  "maSV": "SV001",
-  "maLop": "LOP001",
-  "maMonHoc": "CT108",
-  "diemGK": 8,
-  "diemCK": 7.5,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-20T07:25:44.651Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550cf8e7d855c62856e616"
-  },
-  "maSV": "SV001",
-  "maLop": "LOP001",
-  "maMonHoc": "CT109",
-  "diemGK": 8,
-  "diemCK": 7.5,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-20T07:25:44.651Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550cf8e7d855c62856e617"
-  },
-  "maSV": "SV001",
-  "maLop": "LOP001",
-  "maMonHoc": "CT110",
-  "diemGK": 8,
-  "diemCK": 7.5,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-20T07:25:44.651Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550da4e7d855c62856e618"
-  },
-  "maSV": "SV002",
-  "maLop": "LOP002",
-  "maMonHoc": "CT111",
-  "diemGK": 6.5,
-  "diemCK": 7,
-  "diemCC": 8,
+  "semester": "HK1-2022",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
   "status": 0,
   "finalGrade": 6.9,
-  "letterGrade": "C",
+  "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-20T07:28:36.816Z"
-  },
-  "semester": "HK2-2025"
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
 },
 {
   "_id": {
-    "$oid": "68550da4e7d855c62856e619"
+    "$oid": "685bd91e77eadf30156c77cd"
   },
-  "maSV": "SV002",
-  "maLop": "LOP002",
-  "maMonHoc": "CT112",
-  "diemGK": 6.5,
-  "diemCK": 7,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 6.9,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-20T07:28:36.816Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550da4e7d855c62856e61a"
-  },
-  "maSV": "SV002",
-  "maLop": "LOP002",
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT113",
-  "diemGK": 6.5,
-  "diemCK": 7,
-  "diemCC": 8,
+  "semester": "HK1-2022",
+  "diemA": 6,
+  "diemB": 5.5,
+  "diemC": 6,
   "status": 0,
-  "finalGrade": 6.9,
+  "finalGrade": 5.8,
   "letterGrade": "C",
   "createdAt": {
-    "$date": "2025-06-20T07:28:36.816Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550da4e7d855c62856e61b"
-  },
-  "maSV": "SV002",
-  "maLop": "LOP002",
-  "maMonHoc": "CT114",
-  "diemGK": 6.5,
-  "diemCK": 7,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 6.9,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-20T07:28:36.816Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550da4e7d855c62856e61c"
-  },
-  "maSV": "SV002",
-  "maLop": "LOP002",
-  "maMonHoc": "CT115",
-  "diemGK": 6.5,
-  "diemCK": 7,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 6.9,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-20T07:28:36.816Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68550da4e7d855c62856e61d"
-  },
-  "maSV": "SV002",
-  "maLop": "LOP002",
-  "maMonHoc": "CT116",
-  "diemGK": 6.5,
-  "diemCK": 7,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 6.9,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-20T07:28:36.816Z"
-  },
-  "semester": "HK2-2025"
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6883f"
-  },
-  "maSV": "SV003",
-  "maLop": "LOP003",
-  "maMonHoc": "CT103",
-  "semester": "HK1-2024",
-  "diemGK": 7.5,
-  "diemCK": 8,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68840"
+    "$oid": "685bd91e77eadf30156c77ce"
   },
-  "maSV": "SV003",
-  "maLop": "LOP003",
-  "maMonHoc": "CT104",
-  "semester": "HK1-2024",
-  "diemGK": 6.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 7.3,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68841"
-  },
-  "maSV": "SV003",
-  "maLop": "LOP003",
-  "maMonHoc": "CT117",
-  "semester": "HK2-2024",
-  "diemGK": 8,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.4,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68842"
-  },
-  "maSV": "SV003",
-  "maLop": "LOP003",
-  "maMonHoc": "CT118",
-  "semester": "HK2-2024",
-  "diemGK": 7,
-  "diemCK": 8.5,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8.1,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68843"
-  },
-  "maSV": "SV003",
-  "maLop": "LOP003",
-  "maMonHoc": "CT119",
-  "semester": "HK3-2024",
-  "diemGK": 8.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 7.8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68844"
-  },
-  "maSV": "SV003",
-  "maLop": "LOP003",
-  "maMonHoc": "CT120",
-  "semester": "HK3-2024",
-  "diemGK": 6,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 6.8,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68845"
-  },
-  "maSV": "SV004",
-  "maLop": "LOP004",
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT121",
-  "semester": "HK1-2024",
-  "diemGK": 7.5,
-  "diemCK": 8,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68846"
-  },
-  "maSV": "SV004",
-  "maLop": "LOP004",
-  "maMonHoc": "CT122",
-  "semester": "HK1-2024",
-  "diemGK": 6.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 7.3,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68847"
-  },
-  "maSV": "SV004",
-  "maLop": "LOP004",
-  "maMonHoc": "CT123",
-  "semester": "HK2-2024",
-  "diemGK": 8,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.4,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68848"
-  },
-  "maSV": "SV004",
-  "maLop": "LOP004",
-  "maMonHoc": "CT124",
-  "semester": "HK2-2024",
-  "diemGK": 7,
-  "diemCK": 8.5,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8.1,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68849"
-  },
-  "maSV": "SV004",
-  "maLop": "LOP004",
-  "maMonHoc": "CT125",
-  "semester": "HK3-2024",
-  "diemGK": 8.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
+  "semester": "HK1-2022",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
   "status": 0,
   "finalGrade": 7.8,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee6884a"
+    "$oid": "685bd91e77eadf30156c77cf"
   },
-  "maSV": "SV004",
-  "maLop": "LOP004",
-  "maMonHoc": "CT126",
-  "semester": "HK3-2024",
-  "diemGK": 6,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 6.8,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6884b"
-  },
-  "maSV": "SV005",
-  "maLop": "LOP005",
-  "maMonHoc": "CT127",
-  "semester": "HK1-2024",
-  "diemGK": 7,
-  "diemCK": 8,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 7.8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6884c"
-  },
-  "maSV": "SV005",
-  "maLop": "LOP005",
-  "maMonHoc": "CT128",
-  "semester": "HK1-2024",
-  "diemGK": 6.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 7.3,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6884d"
-  },
-  "maSV": "SV005",
-  "maLop": "LOP005",
-  "maMonHoc": "CT129",
-  "semester": "HK2-2024",
-  "diemGK": 8,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.4,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6884e"
-  },
-  "maSV": "SV005",
-  "maLop": "LOP005",
-  "maMonHoc": "CT130",
-  "semester": "HK2-2024",
-  "diemGK": 7.5,
-  "diemCK": 8.5,
-  "diemCC": 9,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT105",
+  "semester": "HK1-2022",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
   "status": 0,
   "finalGrade": 8.3,
-  "letterGrade": "B",
+  "letterGrade": "A",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee6884f"
+    "$oid": "685bd91e77eadf30156c77d0"
   },
-  "maSV": "SV005",
-  "maLop": "LOP005",
-  "maMonHoc": "CT103",
-  "semester": "HK3-2024",
-  "diemGK": 8.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 7.8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68850"
-  },
-  "maSV": "SV005",
-  "maLop": "LOP005",
-  "maMonHoc": "CT104",
-  "semester": "HK3-2024",
-  "diemGK": 6,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 6.8,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68851"
-  },
-  "maSV": "SV006",
-  "maLop": "LOP006",
-  "maMonHoc": "CT105",
-  "semester": "HK1-2025",
-  "diemGK": 7.5,
-  "diemCK": 8,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68852"
-  },
-  "maSV": "SV006",
-  "maLop": "LOP006",
-  "maMonHoc": "CT106",
-  "semester": "HK1-2025",
-  "diemGK": 6.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT102",
+  "semester": "HK2-2022",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
   "status": 0,
   "finalGrade": 7.3,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68853"
+    "$oid": "685bd91e77eadf30156c77d1"
   },
-  "maSV": "SV006",
-  "maLop": "LOP006",
-  "maMonHoc": "CT107",
-  "semester": "HK2-2025",
-  "diemGK": 8,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.4,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68854"
-  },
-  "maSV": "SV006",
-  "maLop": "LOP006",
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT108",
-  "semester": "HK2-2025",
-  "diemGK": 7,
-  "diemCK": 8.5,
-  "diemCC": 9,
+  "semester": "HK2-2022",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
   "status": 0,
-  "finalGrade": 8.1,
-  "letterGrade": "B",
+  "finalGrade": 8.3,
+  "letterGrade": "A",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68855"
+    "$oid": "685bd91e77eadf30156c77d2"
   },
-  "maSV": "SV006",
-  "maLop": "LOP006",
-  "maMonHoc": "CT109",
-  "semester": "HK3-2025",
-  "diemGK": 8.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT114",
+  "semester": "HK2-2022",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77d3"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT122",
+  "semester": "HK2-2022",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77d4"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT106",
+  "semester": "HK2-2022",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
   "status": 0,
   "finalGrade": 7.8,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68856"
+    "$oid": "685bd91e77eadf30156c77d5"
   },
-  "maSV": "SV006",
-  "maLop": "LOP006",
-  "maMonHoc": "CT110",
-  "semester": "HK3-2025",
-  "diemGK": 6,
-  "diemCK": 7,
-  "diemCC": 8.5,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT103",
+  "semester": "HK1-2023",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
   "status": 0,
-  "finalGrade": 6.8,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68857"
-  },
-  "maSV": "SV007",
-  "maLop": "LOP007",
-  "maMonHoc": "CT111",
-  "semester": "HK1-2025",
-  "diemGK": 7.5,
-  "diemCK": 8,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8,
+  "finalGrade": 7.8,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68858"
+    "$oid": "685bd91e77eadf30156c77d6"
   },
-  "maSV": "SV007",
-  "maLop": "LOP007",
-  "maMonHoc": "CT112",
-  "semester": "HK1-2025",
-  "diemGK": 6.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT109",
+  "semester": "HK1-2023",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77d7"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT115",
+  "semester": "HK1-2023",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77d8"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT123",
+  "semester": "HK1-2023",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
   "status": 0,
   "finalGrade": 7.3,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68859"
+    "$oid": "685bd91e77eadf30156c77d9"
   },
-  "maSV": "SV007",
-  "maLop": "LOP007",
-  "maMonHoc": "CT113",
-  "semester": "HK2-2025",
-  "diemGK": 8,
-  "diemCK": 7,
-  "diemCC": 8.5,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT111",
+  "semester": "HK1-2023",
+  "diemA": 6,
+  "diemB": 5.5,
+  "diemC": 6,
   "status": 0,
-  "finalGrade": 7.4,
-  "letterGrade": "B",
+  "finalGrade": 5.8,
+  "letterGrade": "C",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee6885a"
+    "$oid": "685bd91e77eadf30156c77da"
   },
-  "maSV": "SV007",
-  "maLop": "LOP007",
-  "maMonHoc": "CT114",
-  "semester": "HK2-2025",
-  "diemGK": 7,
-  "diemCK": 8.5,
-  "diemCC": 9,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT104",
+  "semester": "HK2-2023",
+  "diemA": 6,
+  "diemB": 5.5,
+  "diemC": 6,
   "status": 0,
-  "finalGrade": 8.1,
-  "letterGrade": "B",
+  "finalGrade": 5.8,
+  "letterGrade": "C",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee6885b"
+    "$oid": "685bd91e77eadf30156c77db"
   },
-  "maSV": "SV007",
-  "maLop": "LOP007",
-  "maMonHoc": "CT115",
-  "semester": "HK3-2025",
-  "diemGK": 8.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT110",
+  "semester": "HK2-2023",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
   "status": 0,
   "finalGrade": 7.8,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee6885c"
+    "$oid": "685bd91e77eadf30156c77dc"
   },
-  "maSV": "SV007",
-  "maLop": "LOP007",
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT116",
-  "semester": "HK3-2025",
-  "diemGK": 6,
-  "diemCK": 7,
-  "diemCC": 8.5,
+  "semester": "HK2-2023",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
   "status": 0,
-  "finalGrade": 6.8,
-  "letterGrade": "C",
+  "finalGrade": 6.9,
+  "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee6885d"
+    "$oid": "685bd91e77eadf30156c77dd"
   },
-  "maSV": "SV008",
-  "maLop": "LOP008",
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT124",
+  "semester": "HK2-2023",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77de"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT112",
+  "semester": "HK2-2023",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
+  "status": 0,
+  "finalGrade": 7.3,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77df"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT117",
   "semester": "HK1-2024",
-  "diemGK": 7.5,
-  "diemCK": 8,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6885e"
-  },
-  "maSV": "SV008",
-  "maLop": "LOP008",
-  "maMonHoc": "CT118",
-  "semester": "HK1-2024",
-  "diemGK": 6.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 7.3,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6885f"
-  },
-  "maSV": "SV008",
-  "maLop": "LOP008",
-  "maMonHoc": "CT119",
-  "semester": "HK2-2024",
-  "diemGK": 8,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.4,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68860"
-  },
-  "maSV": "SV008",
-  "maLop": "LOP008",
-  "maMonHoc": "CT120",
-  "semester": "HK2-2024",
-  "diemGK": 7,
-  "diemCK": 8.5,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8.1,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68861"
-  },
-  "maSV": "SV008",
-  "maLop": "LOP008",
-  "maMonHoc": "CT121",
-  "semester": "HK3-2024",
-  "diemGK": 8.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
   "status": 0,
   "finalGrade": 7.8,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68862"
+    "$oid": "685bd91e77eadf30156c77e0"
   },
-  "maSV": "SV008",
-  "maLop": "LOP008",
-  "maMonHoc": "CT122",
-  "semester": "HK3-2024",
-  "diemGK": 6,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 6.8,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68863"
-  },
-  "maSV": "SV009",
-  "maLop": "LOP009",
-  "maMonHoc": "CT123",
-  "semester": "HK1-2025",
-  "diemGK": 7.5,
-  "diemCK": 8,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68864"
-  },
-  "maSV": "SV009",
-  "maLop": "LOP009",
-  "maMonHoc": "CT124",
-  "semester": "HK1-2025",
-  "diemGK": 6.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 7.3,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68865"
-  },
-  "maSV": "SV009",
-  "maLop": "LOP009",
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT125",
-  "semester": "HK2-2025",
-  "diemGK": 8,
-  "diemCK": 7,
-  "diemCC": 8.5,
+  "semester": "HK1-2024",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
   "status": 0,
-  "finalGrade": 7.4,
-  "letterGrade": "B",
+  "finalGrade": 8.3,
+  "letterGrade": "A",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68866"
+    "$oid": "685bd91e77eadf30156c77e1"
   },
-  "maSV": "SV009",
-  "maLop": "LOP009",
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT119",
+  "semester": "HK1-2024",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77e2"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT120",
+  "semester": "HK1-2024",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77e3"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT118",
+  "semester": "HK2-2024",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77e4"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT126",
-  "semester": "HK2-2025",
-  "diemGK": 7,
-  "diemCK": 8.5,
-  "diemCC": 9,
+  "semester": "HK2-2024",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
   "status": 0,
-  "finalGrade": 8.1,
-  "letterGrade": "B",
+  "finalGrade": 8.3,
+  "letterGrade": "A",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68867"
+    "$oid": "685bd91e77eadf30156c77e5"
   },
-  "maSV": "SV009",
-  "maLop": "LOP009",
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT127",
-  "semester": "HK3-2025",
-  "diemGK": 8.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
+  "semester": "HK2-2024",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
+  "status": 0,
+  "finalGrade": 7.3,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77e6"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT128",
+  "semester": "HK2-2024",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
   "status": 0,
   "finalGrade": 7.8,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee68868"
+    "$oid": "685bd91e77eadf30156c77e7"
   },
-  "maSV": "SV009",
-  "maLop": "LOP009",
-  "maMonHoc": "CT128",
-  "semester": "HK3-2025",
-  "diemGK": 6,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 6.8,
-  "letterGrade": "C",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee68869"
-  },
-  "maSV": "SV010",
-  "maLop": "LOP010",
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT129",
   "semester": "HK1-2025",
-  "diemGK": 7.5,
-  "diemCK": 8,
-  "diemCC": 9,
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
   "status": 0,
-  "finalGrade": 8,
-  "letterGrade": "B",
+  "finalGrade": 6.3,
+  "letterGrade": "C",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee6886a"
+    "$oid": "685bd91e77eadf30156c77e8"
   },
-  "maSV": "SV010",
-  "maLop": "LOP010",
+  "maSV": "SV001",
+  "maLop": "LOP001",
   "maMonHoc": "CT130",
   "semester": "HK1-2025",
-  "diemGK": 6.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
-  "status": 0,
-  "finalGrade": 7.3,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6886b"
-  },
-  "maSV": "SV010",
-  "maLop": "LOP010",
-  "maMonHoc": "CT103",
-  "semester": "HK2-2025",
-  "diemGK": 8,
-  "diemCK": 7,
-  "diemCC": 8.5,
-  "status": 0,
-  "finalGrade": 7.4,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6886c"
-  },
-  "maSV": "SV010",
-  "maLop": "LOP010",
-  "maMonHoc": "CT104",
-  "semester": "HK2-2025",
-  "diemGK": 7,
-  "diemCK": 8.5,
-  "diemCC": 9,
-  "status": 0,
-  "finalGrade": 8.1,
-  "letterGrade": "B",
-  "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68567ca4c93005feaee6886d"
-  },
-  "maSV": "SV010",
-  "maLop": "LOP010",
-  "maMonHoc": "CT105",
-  "semester": "HK3-2025",
-  "diemGK": 8.5,
-  "diemCK": 7.5,
-  "diemCC": 8,
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
   "status": 0,
   "finalGrade": 7.8,
   "letterGrade": "B",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
   }
 },
 {
   "_id": {
-    "$oid": "68567ca4c93005feaee6886e"
+    "$oid": "685bd91e77eadf30156c77e9"
   },
-  "maSV": "SV010",
-  "maLop": "LOP010",
-  "maMonHoc": "CT106",
-  "semester": "HK3-2025",
-  "diemGK": 6,
-  "diemCK": 7,
-  "diemCC": 8.5,
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT121",
+  "semester": "HK1-2025",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
   "status": 0,
-  "finalGrade": 6.8,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77ea"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT122",
+  "semester": "HK1-2025",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77eb"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT123",
+  "semester": "HK2-2025",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
   "letterGrade": "C",
   "createdAt": {
-    "$date": "2025-06-21T09:34:28.621Z"
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77ec"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT124",
+  "semester": "HK2-2025",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
+  "status": 0,
+  "finalGrade": 7.8,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77ed"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT125",
+  "semester": "HK2-2025",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77ee"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT126",
+  "semester": "HK2-2025",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77ef"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT127",
+  "semester": "HK1-2026",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77f0"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT128",
+  "semester": "HK1-2026",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
+  "status": 0,
+  "finalGrade": 7.3,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77f1"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT129",
+  "semester": "HK1-2026",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bd91e77eadf30156c77f2"
+  },
+  "maSV": "SV001",
+  "maLop": "LOP001",
+  "maMonHoc": "CT130",
+  "semester": "HK1-2026",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
+  "status": 0,
+  "finalGrade": 7.8,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:10:22.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77f3"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT102",
+  "semester": "HK1-2022",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
+  "status": 0,
+  "finalGrade": 7.3,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77f4"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT108",
+  "semester": "HK1-2022",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77f5"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT114",
+  "semester": "HK1-2022",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
+  "status": 0,
+  "finalGrade": 7.8,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77f6"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT122",
+  "semester": "HK1-2022",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77f7"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT101",
+  "semester": "HK2-2022",
+  "diemA": 6,
+  "diemB": 5.5,
+  "diemC": 6,
+  "status": 0,
+  "finalGrade": 5.8,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77f8"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT107",
+  "semester": "HK2-2022",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77f9"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT115",
+  "semester": "HK2-2022",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77fa"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT123",
+  "semester": "HK2-2022",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
+  "status": 0,
+  "finalGrade": 7.3,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77fb"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT103",
+  "semester": "HK1-2023",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77fc"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT109",
+  "semester": "HK1-2023",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
+  "status": 0,
+  "finalGrade": 7.8,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77fd"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT116",
+  "semester": "HK1-2023",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77fe"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT124",
+  "semester": "HK1-2023",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c77ff"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT111",
+  "semester": "HK1-2023",
+  "diemA": 6,
+  "diemB": 5.5,
+  "diemC": 6,
+  "status": 0,
+  "finalGrade": 5.8,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7800"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT104",
+  "semester": "HK2-2023",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
+  "status": 0,
+  "finalGrade": 7.3,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7801"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT110",
+  "semester": "HK2-2023",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7802"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT117",
+  "semester": "HK2-2023",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
+  "status": 0,
+  "finalGrade": 7.8,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7803"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT125",
+  "semester": "HK2-2023",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7804"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT105",
+  "semester": "HK1-2024",
+  "diemA": 6,
+  "diemB": 5.5,
+  "diemC": 6,
+  "status": 0,
+  "finalGrade": 5.8,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7805"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT112",
+  "semester": "HK1-2024",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7806"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT118",
+  "semester": "HK1-2024",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7807"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT126",
+  "semester": "HK1-2024",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
+  "status": 0,
+  "finalGrade": 7.3,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7808"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT106",
+  "semester": "HK2-2024",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7809"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT119",
+  "semester": "HK2-2024",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
+  "status": 0,
+  "finalGrade": 7.8,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c780a"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT127",
+  "semester": "HK2-2024",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c780b"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT128",
+  "semester": "HK2-2024",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c780c"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT120",
+  "semester": "HK1-2025",
+  "diemA": 6,
+  "diemB": 5.5,
+  "diemC": 6,
+  "status": 0,
+  "finalGrade": 5.8,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c780d"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT129",
+  "semester": "HK1-2025",
+  "diemA": 7.5,
+  "diemB": 7,
+  "diemC": 7.5,
+  "status": 0,
+  "finalGrade": 7.3,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c780e"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT130",
+  "semester": "HK1-2025",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c780f"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT121",
+  "semester": "HK1-2025",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7810"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT122",
+  "semester": "HK2-2025",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7811"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT123",
+  "semester": "HK2-2025",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
+  "status": 0,
+  "finalGrade": 7.8,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7812"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT124",
+  "semester": "HK2-2025",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7813"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT125",
+  "semester": "HK2-2025",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7814"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT126",
+  "semester": "HK1-2026",
+  "diemA": 6.5,
+  "diemB": 6,
+  "diemC": 6.5,
+  "status": 0,
+  "finalGrade": 6.3,
+  "letterGrade": "C",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7815"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT127",
+  "semester": "HK1-2026",
+  "diemA": 8,
+  "diemB": 7.5,
+  "diemC": 8,
+  "status": 0,
+  "finalGrade": 7.8,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7816"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT128",
+  "semester": "HK1-2026",
+  "diemA": 8.5,
+  "diemB": 8,
+  "diemC": 8.5,
+  "status": 0,
+  "finalGrade": 8.3,
+  "letterGrade": "A",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685bda7177eadf30156c7817"
+  },
+  "maSV": "SV002",
+  "maLop": "LOP002",
+  "maMonHoc": "CT129",
+  "semester": "HK1-2026",
+  "diemA": 7,
+  "diemB": 6.5,
+  "diemC": 7,
+  "status": 0,
+  "finalGrade": 6.9,
+  "letterGrade": "B",
+  "createdAt": {
+    "$date": "2025-06-25T11:16:01.920Z"
   }
 }]

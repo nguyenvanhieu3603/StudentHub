@@ -8,11 +8,11 @@ const { auth, restrictToAdmin } = require('../middleware/auth');
 const { updateSoSinhVien, processExcelFile } = require('../utils/common');
 const XLSX = require('xlsx');
 
-const calculateGrade = (diemGK, diemCK, diemCC, status) => {
+const calculateGrade = (diemA, diemB, diemC, status) => {
   if (status === 1) return { finalGrade: 0, letterGrade: 'F' };
-  if (diemGK == null || diemCK == null || diemCC == null) return { finalGrade: null, letterGrade: null };
-  const finalGrade = (diemGK * 0.3 + diemCK * 0.6 + diemCC * 0.1).toFixed(1);
-  const gradeNum = parseFloat(finalGrade);
+  if (diemA == null || diemB == null || diemC == null) return { finalGrade: null, letterGrade: null };
+  const finalGrade = Number((diemA * 0.6 + diemB * 0.3 + diemC * 0.1).toFixed(1)); // Ép kiểu sang số
+  const gradeNum = finalGrade;
   return {
     finalGrade,
     letterGrade: gradeNum >= 8.5 ? 'A' : gradeNum >= 7.0 ? 'B' : gradeNum >= 5.5 ? 'C' : gradeNum >= 4.0 ? 'D' : 'F',
@@ -69,9 +69,9 @@ router.post('/getlist', auth, async (req, res) => {
           maMonHoc: 1,
           tenMonHoc: '$course.tenMonHoc',
           semester: 1,
-          diemGK: 1,
-          diemCK: 1,
-          diemCC: 1,
+          diemA: 1,
+          diemB: 1,
+          diemC: 1,
           status: 1,
           finalGrade: 1,
           letterGrade: 1,
@@ -99,7 +99,7 @@ router.post('/export', auth, async (req, res) => {
   try {
     const query = {};
     if (maLop) query.maLop = { $in: Array.isArray(maLop) ? maLop : maLop.split(',') };
-    if (maMonHoc) query.maMonHoc = { $in: Array.isArray(maMonHoc) ? maMonHoc : maMonHoc.split(',') };
+    if (maMonHoc) query.maMonHoc = { $in: Array.isArray(maLop) ? maLop : maMonHoc.split(',') };
     if (maSV) query.maSV = { $regex: maSV, $options: 'i' };
     if (semester) query.semester = { $regex: semester, $options: 'i' };
 
@@ -126,9 +126,9 @@ router.post('/export', auth, async (req, res) => {
           maMonHoc: 1,
           tenMonHoc: '$course.tenMonHoc',
           semester: 1,
-          diemGK: 1,
-          diemCK: 1,
-          diemCC: 1,
+          diemA: 1,
+          diemB: 1,
+          diemC: 1,
           finalGrade: 1,
           letterGrade: 1,
         },
@@ -143,9 +143,9 @@ router.post('/export', auth, async (req, res) => {
       { key: 'tenLop', header: 'Lớp', width: 15 },
       { key: 'tenMonHoc', header: 'Môn học', width: 30 },
       { key: 'semester', header: 'Học kỳ', width: 12 },
-      { key: 'diemGK', header: 'Điểm GK', width: 10 },
-      { key: 'diemCK', header: 'Điểm CK', width: 10 },
-      { key: 'diemCC', header: 'Điểm CC', width: 10 },
+      { key: 'diemA', header: 'Điểm A', width: 10 },
+      { key: 'diemB', header: 'Điểm B', width: 10 },
+      { key: 'diemC', header: 'Điểm C', width: 10 },
       { key: 'finalGrade', header: 'Điểm TB', width: 10 },
       { key: 'letterGrade', header: 'Xếp Loại', width: 10 },
     ];
@@ -190,9 +190,9 @@ router.post('/getlistbymasv', auth, async (req, res) => {
           maMonHoc: 1,
           tenMonHoc: '$course.tenMonHoc',
           semester: 1,
-          diemGK: 1,
-          diemCK: 1,
-          diemCC: 1,
+          diemA: 1,
+          diemB: 1,
+          diemC: 1,
           status: 1,
           finalGrade: { $ifNull: ['$finalGrade', null] },
           letterGrade: { $ifNull: ['$letterGrade', null] },
@@ -204,7 +204,7 @@ router.post('/getlistbymasv', auth, async (req, res) => {
 
     const total = await Grade.countDocuments(query);
     res.json({
-      grades: grades.map(grade => ({ ...grade, ...calculateGrade(grade.diemGK, grade.diemCK, grade.diemCC, grade.status) })),
+      grades: grades.map(grade => ({ ...grade, ...calculateGrade(grade.diemA, grade.diemB, grade.diemC, grade.status) })),
       total,
       page: Number(page),
       limit: Number(limit),
@@ -215,11 +215,11 @@ router.post('/getlistbymasv', auth, async (req, res) => {
 });
 
 router.post('/insert', [auth, restrictToAdmin], async (req, res) => {
-  const { maSV, maLop, maMonHoc, diemGK, diemCK, diemCC, semester } = req.body;
+  const { maSV, maLop, maMonHoc, diemA, diemB, diemC, semester } = req.body;
   try {
     if (!maSV || !maLop || !maMonHoc || !semester) throw new Error('Missing required fields');
     if (!/^HK[1-3]-20[0-9]{2}$/.test(semester)) throw new Error('Invalid semester format');
-    if ([diemGK, diemCK, diemCC].some(d => d != null && (d < 0 || d > 10))) throw new Error('Grades must be between 0 and 10');
+    if ([diemA, diemB, diemC].some(d => d != null && (d < 0 || d > 10))) throw new Error('Grades must be between 0 and 10');
 
     const [student, classData, course, existingGrade] = await Promise.all([
       Student.findOne({ maSV }),
@@ -233,8 +233,8 @@ router.post('/insert', [auth, restrictToAdmin], async (req, res) => {
     if (!course) throw new Error('Course not found');
     if (existingGrade) throw new Error('Grade already exists for this semester');
 
-    const { finalGrade, letterGrade } = calculateGrade(diemGK, diemCK, diemCC, 0);
-    const grade = new Grade({ maSV, maLop, maMonHoc, semester, diemGK, diemCK, diemCC, finalGrade, letterGrade, status: 0 });
+    const { finalGrade, letterGrade } = calculateGrade(diemA, diemB, diemC, 0);
+    const grade = new Grade({ maSV, maLop, maMonHoc, semester, diemA, diemB, diemC, finalGrade, letterGrade, status: 0 });
 
     const session = await Grade.startSession();
     try {
@@ -260,9 +260,9 @@ router.post('/import', [auth, restrictToAdmin], async (req, res) => {
       maLop: ['malop', 'mã lớp'],
       maMonHoc: ['mamonhoc', 'mã môn học'],
       semester: ['semester', 'học kỳ'],
-      diemGK: ['diemgk', 'điểm gk'],
-      diemCK: ['diemck', 'điểm ck'],
-      diemCC: ['diemcc', 'điểm cc'],
+      diemA: ['diema', 'điểm a'],
+      diemB: ['diemb', 'điểm b'],
+      diemC: ['diemc', 'điểm c'],
     };
 
     const validateRow = async (row, headers) => {
@@ -270,16 +270,16 @@ router.post('/import', [auth, restrictToAdmin], async (req, res) => {
       const maLop = row[headers.maLop]?.toString().trim() || '';
       const maMonHoc = row[headers.maMonHoc]?.toString().trim() || '';
       const semester = row[headers.semester]?.toString().trim() || '';
-      const diemGK = Number(row[headers.diemGK]);
-      const diemCK = Number(row[headers.diemCK]);
-      const diemCC = Number(row[headers.diemCC]);
+      const diemA = Number(row[headers.diemA]);
+      const diemB = Number(row[headers.diemB]);
+      const diemC = Number(row[headers.diemC]);
 
       if (!maSV || !maLop || !maMonHoc || !semester) throw new Error('Missing required fields');
       if (!/^HK[1-3]-20[0-9]{2}$/.test(semester)) throw new Error(`Invalid semester: ${semester}`);
       if (!/^[A-Z0-9]{5,10}$/.test(maSV)) throw new Error(`Invalid student ID: ${maSV}`);
       if (!/^[A-Z0-9]{5,10}$/.test(maLop)) throw new Error(`Invalid class ID: ${maLop}`);
       if (!/^[A-Z0-9]{5,10}$/.test(maMonHoc)) throw new Error(`Invalid course ID: ${maMonHoc}`);
-      if ([diemGK, diemCK, diemCC].some(d => d != null && (isNaN(d) || d < 0 || d > 10))) throw new Error('Grades must be between 0 and 10');
+      if ([diemA, diemB, diemC].some(d => d != null && (isNaN(d) || d < 0 || d > 10))) throw new Error('Grades must be between 0 and 10');
 
       const [student, classData, course, existingGrade] = await Promise.all([
         Student.findOne({ maSV }),
@@ -293,8 +293,8 @@ router.post('/import', [auth, restrictToAdmin], async (req, res) => {
       if (!course) throw new Error(`Course ${maMonHoc} not found`);
       if (existingGrade) throw new Error(`Grade for ${maSV} in ${maLop}, ${maMonHoc}, ${semester} exists`);
 
-      const { finalGrade, letterGrade } = calculateGrade(diemGK, diemCK, diemCC, 0);
-      return { maSV, maLop, maMonHoc, semester, diemGK: diemGK || null, diemCK: diemCK || null, diemCC: diemCC || null, finalGrade, letterGrade, status: 0 };
+      const { finalGrade, letterGrade } = calculateGrade(diemA, diemB, diemC, 0);
+      return { maSV, maLop, maMonHoc, semester, diemA: diemA || null, diemB: diemB || null, diemC: diemC || null, finalGrade, letterGrade, status: 0 };
     };
 
     const { validItems: validGrades, errors } = await processExcelFile(req.files.file.data, headerMap, validateRow, { batchSize: 1000 });
@@ -330,14 +330,14 @@ router.post('/update', [auth, restrictToAdmin], async (req, res) => {
     try {
       await session.withTransaction(async () => {
         for (const gradeData of gradesToUpdate) {
-          const { id, diemGK, diemCK, diemCC } = gradeData;
+          const { id, diemA, diemB, diemC } = gradeData;
           const grade = await Grade.findById(id).session(session);
           if (!grade) throw new Error(`Grade ${id} not found`);
-          if ([diemGK, diemCK, diemCC].some(d => d != null && (d < 0 || d > 10))) throw new Error(`Invalid grade for ${grade.maSV}`);
-          grade.diemGK = diemGK != null ? diemGK : grade.diemGK;
-          grade.diemCK = diemCK != null ? diemCK : grade.diemCK;
-          grade.diemCC = diemCC != null ? diemCC : grade.diemCC;
-          const { finalGrade, letterGrade } = calculateGrade(grade.diemGK, grade.diemCK, grade.diemCC, grade.status);
+          if ([diemA, diemB, diemC].some(d => d != null && (d < 0 || d > 10))) throw new Error(`Invalid grade for ${grade.maSV}`);
+          grade.diemA = diemA != null ? diemA : grade.diemA;
+          grade.diemB = diemB != null ? diemB : grade.diemB;
+          grade.diemC = diemC != null ? diemC : grade.diemC;
+          const { finalGrade, letterGrade } = calculateGrade(grade.diemA, grade.diemB, grade.diemC, grade.status);
           grade.finalGrade = finalGrade;
           grade.letterGrade = letterGrade;
           await grade.save({ session });
@@ -390,7 +390,7 @@ router.post('/gpa-by-semester', auth, async (req, res) => {
     const totalCredits = courses.reduce((sum, c) => sum + c.tinChi, 0);
     const weightedSum = grades.reduce((sum, g) => {
       const course = courses.find(c => c.maMonHoc === g.maMonHoc);
-      return sum + (g.finalGrade * (course ? course.tinChi : 0));
+      return sum + (Number(g.finalGrade) * (course ? course.tinChi : 0)); // Ép kiểu finalGrade sang số
     }, 0);
 
     const gpa = totalCredits ? (weightedSum / totalCredits).toFixed(2) : 0;

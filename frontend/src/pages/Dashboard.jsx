@@ -1,28 +1,24 @@
-import { useState, useEffect } from 'react'
-import { getStats, getStudentsByKhoa, getAverageByCourse } from '../services/api'
-import { Bar, Line } from 'react-chartjs-2'
+import { useState, useEffect } from 'react';
+import { getStats, getStudentsByKhoa, getTopStudentsByGPA } from '../services/api';
+import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
-  LineElement,
-  PointElement,
   Title,
   Tooltip,
   Legend,
-} from 'chart.js'
+} from 'chart.js';
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
-  LineElement,
-  PointElement,
   Title,
   Tooltip,
   Legend
-)
+);
 
 export default function Dashboard() {
   const [stats, setStats] = useState({
@@ -30,37 +26,35 @@ export default function Dashboard() {
     totalCourses: 0,
     totalClasses: 0,
     totalLecturers: 0,
-  })
-  const [studentsByKhoa, setStudentsByKhoa] = useState([])
-  const [averageByCourse, setAverageByCourse] = useState([])
-  const [loading, setLoading] = useState(true)
+  });
+  const [studentsByKhoa, setStudentsByKhoa] = useState([]);
+  const [topStudentsByGPA, setTopStudentsByGPA] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [statsResponse, khoaResponse, courseResponse] = await Promise.all([
+        const [statsResponse, khoaResponse, gpaResponse] = await Promise.all([
           getStats(),
           getStudentsByKhoa(),
-          getAverageByCourse(),
-        ])
-        setStats(statsResponse.data)
-        // Lấy dữ liệu sinh viên theo khoa
-        setStudentsByKhoa(Array.isArray(khoaResponse.data) ? khoaResponse.data : [])
-        // Lấy top 5 môn học theo điểm trung bình
-        setAverageByCourse(Array.isArray(courseResponse.data) ? courseResponse.data : [])
+          getTopStudentsByGPA(),
+        ]);
+        setStats(statsResponse.data);
+        setStudentsByKhoa(Array.isArray(khoaResponse.data) ? khoaResponse.data : []);
+        setTopStudentsByGPA(Array.isArray(gpaResponse.data) ? gpaResponse.data : []);
       } catch (error) {
-        console.error('Failed to fetch data:', error)
-        setStudentsByKhoa([])
-        setAverageByCourse([])
+        console.error('Failed to fetch data:', error);
+        setStudentsByKhoa([]);
+        setTopStudentsByGPA([]);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchData()
-  }, [])
+    };
+    fetchData();
+  }, []);
 
   // Dữ liệu biểu đồ cột (Top 5 khoa theo số sinh viên)
-  const barData = {
+  const barDataKhoa = {
     labels: studentsByKhoa.length > 0 ? studentsByKhoa.map(item => item.khoa) : ['Chưa có dữ liệu'],
     datasets: [
       {
@@ -72,23 +66,22 @@ export default function Dashboard() {
         hoverBackgroundColor: 'rgba(99, 102, 241, 0.7)',
       },
     ],
-  }
+  };
 
-  // Dữ liệu biểu đồ đường (Top 5 môn học theo điểm trung bình)
-  const lineData = {
-    labels: averageByCourse.length > 0 ? averageByCourse.map(item => item.tenMonHoc) : ['Chưa có dữ liệu'],
+  // Dữ liệu biểu đồ cột (Top 5 sinh viên theo GPA)
+  const barDataStudents = {
+    labels: topStudentsByGPA.length > 0 ? topStudentsByGPA.map(item => item.tenSV) : ['Chưa có dữ liệu'],
     datasets: [
       {
-        label: 'Điểm trung bình',
-        data: averageByCourse.length > 0 ? averageByCourse.map(item => item.avgGrade) : [0],
-        fill: false,
+        label: 'GPA',
+        data: topStudentsByGPA.length > 0 ? topStudentsByGPA.map(item => item.gpa) : [0],
+        backgroundColor: 'rgba(244, 114, 182, 0.5)',
         borderColor: 'rgba(244, 114, 182, 1)',
-        tension: 0.4,
-        pointBackgroundColor: 'rgba(244, 114, 182, 1)',
-        pointHoverRadius: 8,
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(219, 39, 119, 0.7)',
       },
     ],
-  }
+  };
 
   const chartOptions = {
     responsive: true,
@@ -113,9 +106,9 @@ export default function Dashboard() {
         },
       },
     },
-  }
+  };
 
-  const lineChartOptions = {
+  const gpaChartOptions = {
     ...chartOptions,
     scales: {
       y: {
@@ -123,12 +116,12 @@ export default function Dashboard() {
         max: 10,
         title: {
           display: true,
-          text: 'Điểm trung bình',
+          text: 'GPA',
           font: { family: 'Inter', size: 14 },
         },
       },
     },
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-50 p-8 ml-64 font-['Inter']">
@@ -169,7 +162,7 @@ export default function Dashboard() {
               <h2 className="text-xl font-semibold text-indigo-600 mb-4">Top 5 khoa theo số sinh viên</h2>
               <div className="h-80">
                 {studentsByKhoa.length > 0 ? (
-                  <Bar data={barData} options={chartOptions} />
+                  <Bar data={barDataKhoa} options={chartOptions} />
                 ) : (
                   <div className="flex items-center justify-center h-full text-gray-500">
                     Chưa có dữ liệu sinh viên theo khoa
@@ -178,13 +171,13 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md">
-              <h2 className="text-xl font-semibold text-indigo-600 mb-4">Top 5 môn học theo điểm trung bình</h2>
+              <h2 className="text-xl font-semibold text-indigo-600 mb-4">Top 5 sinh viên theo GPA</h2>
               <div className="h-80">
-                {averageByCourse.length > 0 ? (
-                  <Line data={lineData} options={lineChartOptions} />
+                {topStudentsByGPA.length > 0 ? (
+                  <Bar data={barDataStudents} options={gpaChartOptions} />
                 ) : (
                   <div className="flex items-center justify-center h-full text-gray-500">
-                    Chưa có dữ liệu điểm trung bình theo môn
+                    Chưa có dữ liệu GPA sinh viên
                   </div>
                 )}
               </div>
@@ -193,5 +186,5 @@ export default function Dashboard() {
         </>
       )}
     </div>
-  )
+  );
 }

@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Send, Trash2, Link } from 'lucide-react';
 import { toast } from 'react-toastify';
-// import axios from 'axios';
 import { askChatbot, exportStudents, exportGrades, exportClasses } from '../services/api';
 
 export default function ChatbotPage() {
@@ -15,19 +14,16 @@ export default function ChatbotPage() {
   const chatContainerRef = useRef(null);
   const navigate = useNavigate();
 
-  // Lưu lịch sử chat vào localStorage
   useEffect(() => {
     localStorage.setItem('chatHistory', JSON.stringify(messages));
   }, [messages]);
 
-  // Cuộn xuống tin nhắn mới nhất
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
 
-  // Gửi câu hỏi
   const handleSendQuestion = async (e) => {
     e.preventDefault();
     if (!question.trim()) {
@@ -66,19 +62,27 @@ export default function ChatbotPage() {
     }
   };
 
-  // Xử lý gợi ý
   const handleSuggestionClick = async (suggestion) => {
     try {
-      if (suggestion.action === 'none') {
-        setMessages((prev) =>
-          prev.map((msg) =>
-            msg.suggestions && msg.suggestions.length > 0
-              ? { ...msg, suggestions: [] }
-              : msg
-          )
-        );
-      } else if (suggestion.action === 'view_student') {
+      if (suggestion.action === 'view_student') {
         navigate(suggestion.link);
+      } else if (suggestion.action === 'get_student_class' || suggestion.action === 'list_students_by_class' || suggestion.action === 'view_student_detail') {
+        setIsLoading(true);
+        const question = suggestion.action === 'get_student_class'
+          ? `Lớp của sinh viên ${suggestion.data.maSV}`
+          : suggestion.action === 'list_students_by_class'
+          ? `Danh sách sinh viên lớp ${suggestion.data.tenLop}`
+          : `Tìm thông tin sinh viên có mã sinh viên là ${suggestion.data.maSV}`;
+        const response = await askChatbot({ question });
+        const botResponse = {
+          id: Date.now() + 1,
+          text: response.data.text,
+          sender: 'bot',
+          suggestions: response.data.suggestions || [],
+        };
+        setMessages((prev) => [...prev, botResponse]);
+      } else if (suggestion.action === 'prompt') {
+        setQuestion(suggestion.data.prompt);
       } else if (suggestion.action.startsWith('export_')) {
         toast.info('Đang xuất dữ liệu, vui lòng đợi...');
         let response;
@@ -102,10 +106,11 @@ export default function ChatbotPage() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message || 'Lỗi khi xử lý gợi ý!');
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // Xóa lịch sử chat
   const handleClearHistory = () => {
     if (window.confirm('Bạn có chắc muốn xóa lịch sử chat?')) {
       setMessages([]);
@@ -114,14 +119,12 @@ export default function ChatbotPage() {
     }
   };
 
-  // Tối ưu render tin nhắn
   const renderedMessages = useMemo(() => messages, [messages]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-50 p-8 ml-64 font-['Inter']">
       <h1 className="text-4xl font-bold text-indigo-600 mb-8">Trợ Lý Chatbot</h1>
       <div className="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-auto">
-        {/* Nút xóa lịch sử */}
         <div className="flex justify-end mb-4">
           <button
             onClick={handleClearHistory}
@@ -131,15 +134,14 @@ export default function ChatbotPage() {
             Xóa lịch sử
           </button>
         </div>
-        {/* Khu vực chat */}
         <div
           ref={chatContainerRef}
           className="max-h-[500px] overflow-y-auto mb-4 pr-2"
         >
           {renderedMessages.length === 0 ? (
-            <p className="text-gray-500 text-center">
-              Chưa có tin nhắn. Hãy nhập câu hỏi để bắt đầu!
-            </p>
+            <div className="text-gray-500 text-center">
+              <p>Chưa có tin nhắn. Hãy bắt đầu bằng cách đặt câu hỏi! 😊</p>
+            </div>
           ) : (
             renderedMessages.map((msg) => (
               <div
@@ -155,9 +157,9 @@ export default function ChatbotPage() {
                       : 'bg-gray-100 text-gray-800 mr-auto'
                   }`}
                 >
-                  <p className="text-sm font-medium">{msg.text}</p>
+                  <p className="text-sm font-medium whitespace-pre-line">{msg.text}</p>
                   {msg.suggestions && msg.suggestions.length > 0 && (
-                    <div className="flex gap-2 mt-2">
+                    <div className="flex gap-2 mt-2 flex-wrap">
                       {msg.suggestions.map((suggestion, index) => (
                         <button
                           key={index}
@@ -165,6 +167,8 @@ export default function ChatbotPage() {
                           className={`text-white px-3 py-1 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 ${
                             suggestion.type === 'export'
                               ? 'bg-green-400 hover:bg-green-500'
+                              : suggestion.type === 'prompt'
+                              ? 'bg-blue-400 hover:bg-blue-500'
                               : 'bg-indigo-400 hover:bg-indigo-500'
                           }`}
                         >
@@ -180,20 +184,21 @@ export default function ChatbotPage() {
           )}
           {isLoading && (
             <div className="flex justify-start mb-2">
-              <div className="bg-gray-100 rounded-lg p-3 max-w-[70%]">
+              <div className="bg-gray-100 rounded-lg p-3 max-w-[70%] flex items-center gap-2">
+                <svg className="animate-spin h-5 w-5 text-gray-500" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                </svg>
                 <p className="text-sm text-gray-500">Đang xử lý...</p>
               </div>
             </div>
           )}
         </div>
-
-        {/* Input và nút gửi */}
         <form onSubmit={handleSendQuestion} className="flex gap-2">
           <input
             type="text"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Nhập câu hỏi (VD: Nguyễn Văn A học lớp nào?)"
+            placeholder="Nhập câu hỏi (VD: Tìm thông tin sinh viên có mã sinh viên là SV001)"
             className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200 text-sm"
             disabled={isLoading}
             maxLength={200}

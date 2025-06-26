@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getStudents, getGradesByMaSV, getCourses, getGPABySemester } from '../services/api';
+import { getStudents, getGradesByMaSV, getCourses } from '../services/api';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
@@ -13,26 +13,22 @@ export default function StudentDetail() {
   const [student, setStudent] = useState(null);
   const [grades, setGrades] = useState([]);
   const [subjects, setSubjects] = useState([]);
-  const [gpa, setGpa] = useState({ gpa: 0, totalCredits: 0 });
-  const [gpaData, setGpaData] = useState([]);
   const [loadingGrades, setLoadingGrades] = useState(true);
   const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0 });
-  const [filter, setFilter] = useState({ maMonHoc: '', semester: '' });
+  const [filter, setFilter] = useState({ maMonHoc: '', semester: '', chartSemester: '' });
 
-  const semesters = [
-    'HK1-2024', 'HK2-2024', 'HK3-2024',
-    'HK1-2025', 'HK2-2025', 'HK3-2025'
-  ];
+  // Định nghĩa danh sách học kỳ từ HK1-2021 đến HK3-2025
+  const semesters = Array.from({ length: 5 }, (_, i) => 2021 + i).flatMap(year =>
+    ['HK1', 'HK2', 'HK3'].map(sem => `${sem}-${year}`)
+  );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [subjectsResponse, studentResponse, gradesResponse, ...gpaResponses] = await Promise.all([
+        const [subjectsResponse, studentResponse, gradesResponse] = await Promise.all([
           getCourses({ limit: 1000 }),
           getStudents({ maSV }),
-          getGradesByMaSV({ maSV, maMonHoc: filter.maMonHoc, semester: filter.semester, page: pagination.page, limit: pagination.limit }),
-          ...semesters.map(sem => getGPABySemester({ maSV, semester: sem })),
-          getGPABySemester({ maSV, semester: filter.semester })
+          getGradesByMaSV({ maSV, maMonHoc: '', semester: '', page: 1, limit: 1000 }) // Lấy tất cả grades
         ]);
         setSubjects(subjectsResponse.data.courses);
         if (studentResponse.data.students.length > 0) {
@@ -41,11 +37,30 @@ export default function StudentDetail() {
           toast.error('Không tìm thấy sinh viên');
           navigate('/students');
         }
-        setGrades(gradesResponse.data.grades);
-        setPagination(prev => ({ ...prev, total: gradesResponse.data.total }));
-        setGpa(gpaResponses[gpaResponses.length - 1].data);
-        setGpaData(semesters.map((sem, index) => gpaResponses[index].data.gpa));
-      } catch {
+        const allGrades = gradesResponse.data.grades;
+        setGrades(allGrades.filter(g =>
+          (!filter.maMonHoc || g.maMonHoc === filter.maMonHoc) &&
+          (!filter.semester || g.semester === filter.semester)
+        ));
+        setPagination(prev => ({ ...prev, total: allGrades.length }));
+
+        // Tính GPA tổng thể
+        if (allGrades.length > 0) {
+          const totalCredits = allGrades.reduce((sum, grade) => {
+            const subject = subjectsResponse.data.courses.find(s => s.maMonHoc === grade.maMonHoc);
+            return sum + (subject ? subject.tinChi : 0);
+          }, 0);
+          const weightedSum = allGrades.reduce((sum, grade) => {
+            const subject = subjectsResponse.data.courses.find(s => s.maMonHoc === grade.maMonHoc);
+            return sum + (grade.finalGrade * (subject ? subject.tinChi : 0));
+          }, 0);
+          const gpaValue = totalCredits > 0 ? weightedSum / totalCredits : 0;
+          setGpa({ gpa: gpaValue, totalCredits });
+        } else {
+          setGpa({ gpa: 0, totalCredits: 0 });
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
         toast.error('Không thể tải dữ liệu');
         navigate('/students');
       } finally {
@@ -53,7 +68,35 @@ export default function StudentDetail() {
       }
     };
     fetchData();
-  }, [maSV, pagination.page, pagination.limit, filter.maMonHoc, filter.semester, navigate]);
+  }, [maSV, filter.maMonHoc, filter.semester, navigate]);
+
+  const [gpa, setGpa] = useState({ gpa: 0, totalCredits: 0 });
+
+  // Tính GPA theo học kỳ cho biểu đồ
+  const calculateGpaBySemester = () => {
+    // Lọc danh sách học kỳ theo filter.chartSemester
+    const filteredSemesters = filter.chartSemester
+      ? [filter.chartSemester]
+      : semesters;
+
+    const gpaBySemester = filteredSemesters.map(semester => {
+      const semesterGrades = grades.filter(g => g.semester === semester && g.status === 0 && g.finalGrade != null);
+      if (semesterGrades.length === 0) return 0;
+
+      const totalCredits = semesterGrades.reduce((sum, grade) => {
+        const subject = subjects.find(s => s.maMonHoc === grade.maMonHoc);
+        return sum + (subject ? subject.tinChi : 0);
+      }, 0);
+
+      const weightedSum = semesterGrades.reduce((sum, grade) => {
+        const subject = subjects.find(s => s.maMonHoc === grade.maMonHoc);
+        return sum + (grade.finalGrade * (subject ? subject.tinChi : 0));
+      }, 0);
+
+      return totalCredits > 0 ? (weightedSum / totalCredits).toFixed(2) : 0;
+    });
+    return gpaBySemester;
+  };
 
   const handlePageChange = newPage => {
     if (newPage >= 1 && newPage <= Math.ceil(pagination.total / pagination.limit)) {
@@ -66,10 +109,10 @@ export default function StudentDetail() {
   };
 
   const chartData = {
-    labels: semesters,
+    labels: filter.chartSemester ? [filter.chartSemester] : semesters,
     datasets: [{
       label: 'GPA',
-      data: gpaData,
+      data: calculateGpaBySemester(),
       backgroundColor: '#4f46e5',
       borderColor: '#373737',
       borderWidth: 1
@@ -87,7 +130,10 @@ export default function StudentDetail() {
     },
     plugins: {
       legend: { position: 'top' },
-      title: { display: true, text: 'GPA Theo Học Kỳ' }
+      title: { 
+        display: true, 
+        text: filter.chartSemester ? `GPA Học Kỳ ${filter.chartSemester}` : 'GPA Theo Học Kỳ'
+      }
     },
     responsive: true,
     maintainAspectRatio: false
@@ -151,6 +197,19 @@ export default function StudentDetail() {
 
       <div className="bg-white p-8 rounded-2xl shadow-md max-w-4xl transform transition-all hover:shadow-xl mb-8">
         <h2 className="text-2xl font-bold text-indigo-600 mb-6">Biểu Đồ GPA</h2>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Lọc theo học kỳ (biểu đồ)</label>
+          <select
+            value={filter.chartSemester}
+            onChange={e => setFilter({ ...filter, chartSemester: e.target.value })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400"
+          >
+            <option value="">Tất cả học kỳ</option>
+            {semesters.map(sem => (
+              <option key={sem} value={sem}>{sem}</option>
+            ))}
+          </select>
+        </div>
         <div className="h-80">
           <Bar data={chartData} options={chartOptions} />
         </div>
@@ -159,7 +218,7 @@ export default function StudentDetail() {
       <div className="bg-white p-8 rounded-2xl shadow-md max-w-4xl transform transition-all hover:shadow-xl">
         <h2 className="text-2xl font-bold text-indigo-600 mb-6">Danh Sách Điểm</h2>
         <p className="text-gray-700 mb-4">
-          GPA trung bình {filter.semester ? `học kỳ ${filter.semester}` : 'toàn bộ'}: <strong>{gpa.gpa}</strong> (Tổng tín chỉ: {gpa.totalCredits})
+          GPA trung bình {filter.semester ? `học kỳ ${filter.semester}` : 'toàn bộ'}: <strong>{typeof gpa.gpa === 'number' ? gpa.gpa.toFixed(2) : '0.00'}</strong> (Tổng tín chỉ: {gpa.totalCredits || 0})
         </p>
         <div className="mb-4 flex gap-4">
           <div className="flex-1">
@@ -212,18 +271,21 @@ export default function StudentDetail() {
                   </tr>
                 </thead>
                 <tbody>
-                  {grades.map(grade => (
-                    <tr key={`${grade.maSV}-${grade.maMonHoc}-${grade.semester}`} className="border-b hover:bg-indigo-50">
-                      <td className="p-3">{grade.maMonHoc}</td>
-                      <td className="p-3">{grade.tenMonHoc ?? '-'}</td>
-                      <td className="p-3">{grade.semester ?? '-'}</td>
-                      <td className="p-3">{grade.diemCK ?? '-'}</td>
-                      <td className="p-3">{grade.diemGK ?? '-'}</td>
-                      <td className="p-3">{grade.diemCC ?? '-'}</td>
-                      <td className="p-3">{grade.finalGrade ?? '-'}</td>
-                      <td className="p-3">{grade.letterGrade ?? '-'}</td>
-                    </tr>
-                  ))}
+                  {grades.slice((pagination.page - 1) * pagination.limit, pagination.page * pagination.limit).map(grade => {
+                    const subject = subjects.find(s => s.maMonHoc === grade.maMonHoc) || {};
+                    return (
+                      <tr key={`${grade.maSV}-${grade.maMonHoc}-${grade.semester}`} className="border-b hover:bg-indigo-50">
+                        <td className="p-3">{grade.maMonHoc}</td>
+                        <td className="p-3">{subject.tenMonHoc ?? '-'}</td>
+                        <td className="p-3">{grade.semester ?? '-'}</td>
+                        <td className="p-3">{grade.diemA ?? '-'}</td>
+                        <td className="p-3">{grade.diemB ?? '-'}</td>
+                        <td className="p-3">{grade.diemC ?? '-'}</td>
+                        <td className="p-3">{grade.finalGrade ?? '-'}</td>
+                        <td className="p-3">{grade.letterGrade ?? '-'}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

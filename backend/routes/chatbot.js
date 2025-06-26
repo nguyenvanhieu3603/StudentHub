@@ -11,82 +11,80 @@ const router = express.Router();
 
 // Khởi tạo Gemini API
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' }); // Thay bằng 'gemini-2.0-flash' nếu dùng
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
-// Endpoint POST /api/chatbot
 router.post('/', auth, async (req, res) => {
   try {
     const { question } = req.body;
-    const { role } = req.user;
-
-    // Kiểm tra quyền
-    if (!['admin', 'lecturer'].includes(role)) {
-      return res.status(403).json({ message: 'Quyền truy cập bị từ chối' });
-    }
+    const { role, maSV } = req.user;
 
     // Kiểm tra câu hỏi
     if (!question || typeof question !== 'string' || question.trim().length === 0) {
       return res.status(400).json({ message: 'Câu hỏi không hợp lệ' });
     }
 
-    // Gọi Gemini API
+    // Prompt Gemini để phân tích nhiều intent, thêm intent 'help'
     const prompt = `
-      Bạn là chatbot quản lý sinh viên, chỉ trả lời bằng tiếng Việt về thông tin sinh viên, lớp, môn học, điểm số. Không trả lời câu hỏi ngoài hệ thống. 
+      Bạn là chatbot quản lý sinh viên, trả lời bằng tiếng Việt với phong cách thân thiện như ChatGPT, sử dụng emoji khi phù hợp. 
       Hỗ trợ xử lý tiếng Việt không dấu (VD: "Nguyen Van A" tương đương "Nguyễn Văn A").
-      Phân tích câu hỏi sau và trả về JSON hợp lệ với các trường:
-      - intent: Loại câu hỏi ('get_student_class', 'get_student_grade', 'get_class_info', 'count_students_by_name', 'export_data', 'view_student_detail', 'list_students_by_name', 'get_course_average', 'list_students_by_class', hoặc 'invalid').
-      - entities: Đối tượng chứa thông tin chiết xuất (tenSV, tenMonHoc, tenLop, semester, name, type).
-      - text: Câu trả lời bằng tiếng Việt tự nhiên.
-      - suggestions: Mảng gợi ý [{ type, label, action, link? }], chỉ trả về nếu intent là 'export_data' hoặc 'view_student_detail'.
-      Đảm bảo JSON hợp lệ, sử dụng dấu nháy kép ("), không chứa bình luận hoặc text ngoài JSON. Nếu câu hỏi không hợp lệ, trả về intent 'invalid' và text phù hợp.
-      Ví dụ định dạng:
+      Phân tích câu hỏi có thể chứa nhiều yêu cầu hoặc lời chào (VD: "Chào", "Tìm thông tin sinh viên có mã sinh viên là SV001").
+      Nếu là lời chào (VD: "Chào", "Hi", "Hello"), trả về intent 'greet' với text "Chào bạn! Bạn đang cần hỗ trợ gì hôm nay? 😊".
+      Nếu câu hỏi là 'Tôi không biết hỏi gì', 'Bạn có thể làm được những việc gì?', hoặc tương tự, trả về intent 'help' với text liệt kê các nhóm chức năng chính kèm icon.
+      Nếu câu hỏi thiếu thông tin (VD: "Tìm thông tin sinh viên"), yêu cầu bổ sung mà không đưa gợi ý.
+      Trả về JSON hợp lệ với các trường:
+      - intents: Mảng các intent, mỗi intent có:
+        - intent: Loại câu hỏi ('greet', 'help', 'get_student_class', 'get_student_grade', 'get_class_info', 'count_students_by_name', 'export_data', 'view_student_detail', 'list_students_by_name', 'get_course_average', 'list_students_by_class', 'add_student', 'add_class', 'add_grade', 'get_class_size', hoặc 'invalid')
+        - entities: Đối tượng chứa thông tin chiết xuất (tenSV, maSV, tenMonHoc, tenLop, semester, maLop, diemGK, diemCK, diemCC, khoa, khoaHoc, tinChi)
+        - text: Câu trả lời cho intent này, dùng emoji cho 'view_student_detail' (📛, 🆔, 🏫, 🎓, 📈, 📊, ⭐) và 'help' (📍, ✏️, 📊, 👥, 📈, 🎓, ⭐)
+      - text: Câu trả lời tổng hợp bằng tiếng Việt tự nhiên
+      Đảm bảo JSON hợp lệ, sử dụng dấu nháy kép ("), không chứa bình luận. Nếu câu hỏi không hợp lệ, trả về intent 'invalid'.
+      Ví dụ lời chào:
       {
-        "intent": "get_student_class",
-        "entities": { "tenSV": "Nguyễn Văn An" },
-        "text": "Nguyễn Văn An học lớp K22CNPM-A.",
-        "suggestions": []
+        "intents": [
+          {
+            "intent": "greet",
+            "entities": {},
+            "text": "Chào bạn! Bạn đang cần hỗ trợ gì hôm nay? 😊"
+          }
+        ],
+        "text": "Chào bạn! Bạn đang cần hỗ trợ gì hôm nay? 😊"
       }
-      Ví dụ xuất:
+      Ví dụ help:
       {
-        "intent": "export_data",
-        "entities": { "type": "students" },
-        "text": "Đang chuẩn bị xuất danh sách sinh viên.",
-        "suggestions": [
-          { "type": "export", "label": "Xuất Excel", "action": "export_students" }
-        ]
+        "intents": [
+          {
+            "intent": "help",
+            "entities": {},
+            "text": "Tôi có thể hỗ trợ bạn với các chức năng sau:\n📍 Tìm kiếm theo mã sinh viên, tên, lớp...\n✏️ Cập nhật thông tin sinh viên\n📊 Xem trạng thái học tập, điểm, tín chỉ tích lũy\n👥 Xem danh sách lớp\n📈 Xem báo cáo - thống kê\n🎓 Thống kê sinh viên theo khoa, lớp, trạng thái học tập\n⭐ Xem điểm trung bình"
+          }
+        ],
+        "text": "Tôi có thể hỗ trợ bạn với các chức năng sau:\n📍 Tìm kiếm theo mã sinh viên, tên, lớp...\n✏️ Cập nhật thông tin sinh viên\n📊 Xem trạng thái học tập, điểm, tín chỉ tích lũy\n👥 Xem danh sách lớp\n📈 Xem báo cáo - thống kê\n🎓 Thống kê sinh viên theo khoa, lớp, trạng thái học tập\n⭐ Xem điểm trung bình"
       }
-      Ví dụ xem chi tiết:
+      Ví dụ tìm thông tin sinh viên:
       {
-        "intent": "view_student_detail",
-        "entities": { "tenSV": "Nguyễn Văn An" },
-        "text": "Nguyễn Văn An, lớp K22CNPM-A. Xem chi tiết tại: /students/SV001",
-        "suggestions": [
-          { "type": "detail", "label": "Xem chi tiết", "action": "view_student", "link": "/students/SV001" }
-        ]
+        "intents": [
+          {
+            "intent": "view_student_detail",
+            "entities": { "maSV": "SV001" },
+            "text": "📛 Họ và tên: Nguyễn Văn An\n🆔 Mã sinh viên: SV001\n🏫 Lớp: K22CNPM-A\n🎓 Khoa: Y dược\n📈 Trạng thái học tập: Đang học\n📊 Tổng số tín chỉ tích lũy: 21\n⭐ Điểm trung bình tích lũy (GPA): 7.81"
+          }
+        ],
+        "text": "📛 Họ và tên: Nguyễn Văn An\n🆔 Mã sinh viên: SV001\n🏫 Lớp: K22CNPM-A\n🎓 Khoa: Y dược\n📈 Trạng thái học tập: Đang học\n📊 Tổng số tín chỉ tích lũy: 21\n⭐ Điểm trung bình tích lũy (GPA): 7.81"
       }
-      Ví dụ liệt kê:
+      Ví dụ thiếu thông tin:
       {
-        "intent": "list_students_by_name",
-        "entities": { "name": "An" },
-        "text": "Danh sách sinh viên tên 'An': Nguyễn Văn An (SV001, K22CNPM-A), Hoàng Văn Ân (SV025, K23KTPM-A).",
-        "suggestions": []
-      }
-      Ví dụ điểm trung bình:
-      {
-        "intent": "get_course_average",
-        "entities": { "tenMonHoc": "Cơ sở dữ liệu" },
-        "text": "Điểm trung bình môn Cơ sở dữ liệu là 7.0.",
-        "suggestions": []
-      }
-      Ví dụ sinh viên trong lớp:
-      {
-        "intent": "list_students_by_class",
-        "entities": { "tenLop": "K22CNPM-A" },
-        "text": "Sinh viên trong lớp K22CNPM-A: Nguyễn Văn An (SV001).",
-        "suggestions": []
+        "intents": [
+          {
+            "intent": "view_student_detail",
+            "entities": {},
+            "text": "Vui lòng cung cấp mã sinh viên hoặc tên sinh viên."
+          }
+        ],
+        "text": "Vui lòng cung cấp mã sinh viên hoặc tên sinh viên."
       }
       Câu hỏi: "${question}"
     `;
+
     let attempts = 0;
     const maxAttempts = 3;
     let result;
@@ -106,12 +104,11 @@ router.post('/', auth, async (req, res) => {
 
     let response;
     const rawText = result.response.text();
-    console.log('Gemini raw response:', rawText); // Debug phản hồi thô
+    console.log('Gemini raw response:', rawText);
 
-    // Kiểm tra JSON hợp lệ
     try {
       const sanitizedText = rawText.trim().replace(/^```json\n|\n```$/g, '');
-      if (!sanitizedText.startsWith('{') && !sanitizedText.startsWith('[')) {
+      if (!sanitizedText.startsWith('{')) {
         throw new Error('Phản hồi không bắt đầu bằng JSON hợp lệ');
       }
       response = JSON.parse(sanitizedText);
@@ -121,136 +118,8 @@ router.post('/', auth, async (req, res) => {
     }
 
     let text = response.text || 'Không hiểu câu hỏi. Vui lòng hỏi lại!';
-    let suggestions = response.suggestions || [];
 
-    // Xử lý intent và truy vấn MongoDB
-    if (response.intent === 'get_student_class') {
-      const { tenSV } = response.entities;
-      const student = await Student.findOne({ tenSV }).lean();
-      if (student) {
-        text = `${tenSV} học lớp ${student.lop}.`;
-        suggestions = [];
-      } else {
-        text = `Không tìm thấy sinh viên ${tenSV}.`;
-        suggestions = [];
-      }
-    } else if (response.intent === 'get_student_grade') {
-      const { tenSV, tenMonHoc, semester } = response.entities;
-      const student = await Student.findOne({ tenSV }).lean();
-      if (!student) {
-        text = `Không tìm thấy sinh viên ${tenSV}.`;
-        suggestions = [];
-      } else {
-        const course = await Course.findOne({ tenMonHoc }).lean();
-        if (!course) {
-          text = `Không tìm thấy môn học ${tenMonHoc}.`;
-          suggestions = [];
-        } else {
-          const query = { maSV: student.maSV, maMonHoc: course.maMonHoc };
-          if (semester) query.semester = semester;
-          const grade = await Grade.findOne(query).sort({ semester: -1 }).lean();
-          if (grade && grade.finalGrade !== null) {
-            text = `Điểm ${tenMonHoc} của ${tenSV} là ${grade.finalGrade} (HK${grade.semester}).`;
-            suggestions = [];
-          } else {
-            text = `Không tìm thấy điểm ${tenMonHoc} của ${tenSV}${semester ? ` trong ${semester}` : ''}.`;
-            suggestions = [];
-          }
-        }
-      }
-    } else if (response.intent === 'get_class_info') {
-      const { tenLop } = response.entities;
-      const classData = await Class.findOne({ tenLop }).lean();
-      if (classData) {
-        text = `Lớp ${tenLop} có ${classData.soSinhVien} sinh viên.`;
-        suggestions = [];
-      } else {
-        text = `Không tìm thấy lớp ${tenLop}.`;
-        suggestions = [];
-      }
-    } else if (response.intent === 'count_students_by_name') {
-      const { name } = response.entities;
-      const count = await Student.countDocuments({ tenSV: { $regex: name, $options: 'i' } });
-      text = `Có ${count} sinh viên có tên chứa '${name}'.`;
-      suggestions = [];
-    } else if (response.intent === 'export_data') {
-      const { type } = response.entities;
-      if (type === 'students') {
-        text = 'Đang chuẩn bị xuất danh sách sinh viên.';
-        suggestions = [{ type: 'export', label: 'Xuất Excel', action: 'export_students' }];
-      } else if (type === 'grades') {
-        text = 'Đang chuẩn bị xuất bảng điểm.';
-        suggestions = [{ type: 'export', label: 'Xuất Excel', action: 'export_grades' }];
-      } else if (type === 'classes') {
-        text = 'Đang chuẩn bị xuất danh sách lớp.';
-        suggestions = [{ type: 'export', label: 'Xuất Excel', action: 'export_classes' }];
-      } else {
-        text = 'Không xác định được loại dữ liệu cần xuất.';
-        suggestions = [];
-      }
-    } else if (response.intent === 'view_student_detail') {
-      const { tenSV } = response.entities;
-      const student = await Student.findOne({ tenSV }).lean();
-      if (student) {
-        text = `${tenSV}, lớp ${student.lop}. Xem chi tiết tại: /students/${student.maSV}`;
-        suggestions = [
-          { type: 'detail', label: 'Xem chi tiết', action: 'view_student', link: `/students/${student.maSV}` },
-        ];
-      } else {
-        text = `Không tìm thấy sinh viên ${tenSV}.`;
-        suggestions = [];
-      }
-    } else if (response.intent === 'list_students_by_name') {
-      const { name } = response.entities;
-      const students = await Student.find({ tenSV: { $regex: name, $options: 'i' } }).lean();
-      if (students.length > 0) {
-        text = `Danh sách sinh viên tên '${name}': ${students.map(s => `${s.tenSV} (${s.maSV}, ${s.lop})`).join(', ')}.`;
-        suggestions = [];
-      } else {
-        text = `Không tìm thấy sinh viên nào có tên chứa '${name}'.`;
-        suggestions = [];
-      }
-    } else if (response.intent === 'get_course_average') {
-      const { tenMonHoc } = response.entities;
-      const course = await Course.findOne({ tenMonHoc }).lean();
-      if (!course) {
-        text = `Không tìm thấy môn học ${tenMonHoc}.`;
-        suggestions = [];
-      } else {
-        try {
-          const response = await axios.get('http://localhost:5000/api/grades/average-by-course', {
-            headers: { Authorization: `Bearer ${req.headers.authorization.split(' ')[1]}` },
-          });
-          const average = response.data.find(item => item.maMonHoc === course.maMonHoc)?.average || 0;
-          text = `Điểm trung bình môn ${tenMonHoc} là ${average.toFixed(1)}.`;
-          suggestions = [];
-        } catch (error) {
-          text = `Không thể tính điểm trung bình môn ${tenMonHoc}.`;
-          suggestions = [];
-        }
-      }
-    } else if (response.intent === 'list_students_by_class') {
-      const { tenLop } = response.entities;
-      const classData = await Class.findOne({ tenLop }).lean();
-      if (!classData) {
-        text = `Không tìm thấy lớp ${tenLop}.`;
-        suggestions = [];
-      } else {
-        const students = await Student.find({ lop: tenLop }).lean();
-        if (students.length > 0) {
-          text = `Sinh viên trong lớp ${tenLop}: ${students.map(s => `${s.tenSV} (${s.maSV})`).join(', ')}.`;
-          suggestions = [];
-        } else {
-          text = `Lớp ${tenLop} không có sinh viên nào.`;
-          suggestions = [];
-        }
-      }
-    } else {
-      text = 'Vui lòng hỏi bằng tiếng Việt về sinh viên, lớp, hoặc điểm số.';
-      suggestions = [];
-    }
-
-    res.json({ text, suggestions });
+    res.json({ text });
   } catch (error) {
     console.error('Chatbot error:', error.message, error.stack);
     res.status(500).json({ message: error.message || 'Lỗi khi xử lý câu hỏi' });

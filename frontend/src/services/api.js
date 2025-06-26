@@ -54,6 +54,7 @@ export const exportGrades = data => api.post('/grades/export', data);
 export const importGrades = data => api.post('/grades/import', data);
 export const getAverageByCourse = () => api.get('/grades/average-by-course');
 export const getGPABySemester = data => api.post('/grades/gpa-by-semester', data);
+export const getTopStudentsByGPA = () => api.get('/stats/top-students-by-gpa');
 
 export const uploadImage = data => api.post('/images/upload', data);
 export const uploadImages = data => api.post('/images/uploads', data);

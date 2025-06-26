@@ -9,7 +9,7 @@ Modal.setAppElement('#root');
 export default function GradeManagement() {
   const [grades, setGrades] = useState([]);
   const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0 });
-  const [newGrade, setNewGrade] = useState({ maSV: '', maLop: '', maMonHoc: '', semester: '', diemGK: '', diemCK: '', diemCC: '' });
+  const [newGrade, setNewGrade] = useState({ maSV: '', maLop: '', maMonHoc: '', semester: '', diemA: '', diemB: '', diemC: '' });
   const [editGrade, setEditGrade] = useState(null);
   const [initialEditGrade, setInitialEditGrade] = useState(null);
   const [search, setSearch] = useState({ maSV: '', tenSV: '', maLop: '', maMonHoc: '', semester: '' });
@@ -66,7 +66,7 @@ export default function GradeManagement() {
   const handleAdd = async () => {
     try {
       await insertGrade(newGrade);
-      setNewGrade({ maSV: '', maLop: '', maMonHoc: '', semester: '', diemGK: '', diemCK: '', diemCC: '' });
+      setNewGrade({ maSV: '', maLop: '', maMonHoc: '', semester: '', diemA: '', diemB: '', diemC: '' });
       setShowAddModal(false);
       fetchGrades();
       toast.success('Thêm điểm thành công');
@@ -78,7 +78,7 @@ export default function GradeManagement() {
   const handleEdit = async () => {
     try {
       const updatedFields = {};
-      ['diemGK', 'diemCK', 'diemCC'].forEach(field => {
+      ['diemA', 'diemB', 'diemC'].forEach(field => {
         if (editGrade[field] !== initialEditGrade[field]) updatedFields[field] = editGrade[field];
       });
       if (Object.keys(updatedFields).length === 0) {
@@ -205,9 +205,9 @@ export default function GradeManagement() {
                     <td className="p-3">{grade.tenLop}</td>
                     <td className="p-3">{grade.tenMonHoc}</td>
                     <td className="p-3">{grade.semester}</td>
-                    <td className="p-3">{grade.diemCK}</td>
-                    <td className="p-3">{grade.diemGK}</td>
-                    <td className="p-3">{grade.diemCC}</td>
+                    <td className="p-3">{grade.diemA}</td>
+                    <td className="p-3">{grade.diemB}</td>
+                    <td className="p-3">{grade.diemC}</td>
                     <td className="p-3">{grade.finalGrade}</td>
                     <td className="p-3">{grade.letterGrade}</td>
                     <td className="p-3 flex gap-2">
@@ -333,8 +333,8 @@ export default function GradeManagement() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Điểm A</label>
             <input
               type="number"
-              value={newGrade.diemCK}
-              onChange={e => setNewGrade({ ...newGrade, diemCK: e.target.value })}
+              value={newGrade.diemA}
+              onChange={e => setNewGrade({ ...newGrade, diemA: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400"
               min="0"
               max="10"
@@ -344,8 +344,8 @@ export default function GradeManagement() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Điểm B</label>
             <input
               type="number"
-              value={newGrade.diemGK}
-              onChange={e => setNewGrade({ ...newGrade, diemGK: e.target.value })}
+              value={newGrade.diemB}
+              onChange={e => setNewGrade({ ...newGrade, diemB: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400"
               min="0"
               max="10"
@@ -355,8 +355,8 @@ export default function GradeManagement() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Điểm C</label>
             <input
               type="number"
-              value={newGrade.diemCC}
-              onChange={e => setNewGrade({ ...newGrade, diemCC: e.target.value })}
+              value={newGrade.diemC}
+              onChange={e => setNewGrade({ ...newGrade, diemC: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400"
               min="0"
               max="10"
@@ -430,8 +430,8 @@ export default function GradeManagement() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Điểm A</label>
             <input
               type="number"
-              value={editGrade?.diemCK || ''}
-              onChange={e => setEditGrade({ ...editGrade, diemCK: e.target.value })}
+              value={editGrade?.diemA || ''}
+              onChange={e => setEditGrade({ ...editGrade, diemA: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400"
               min="0"
               max="10"
@@ -441,8 +441,8 @@ export default function GradeManagement() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Điểm B</label>
             <input
               type="number"
-              value={editGrade?.diemGK || ''}
-              onChange={e => setEditGrade({ ...editGrade, diemGK: e.target.value })}
+              value={editGrade?.diemB || ''}
+              onChange={e => setEditGrade({ ...editGrade, diemB: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400"
               min="0"
               max="10"
@@ -452,8 +452,8 @@ export default function GradeManagement() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Điểm C</label>
             <input
               type="number"
-              value={editGrade?.diemCC || ''}
-              onChange={e => setEditGrade({ ...editGrade, diemCC: e.target.value })}
+              value={editGrade?.diemC || ''}
+              onChange={e => setEditGrade({ ...editGrade, diemC: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400"
               min="0"
               max="10"
