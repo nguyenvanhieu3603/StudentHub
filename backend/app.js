@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-const fileUpload = require('express-fileupload');
+const multer = require('multer');
 
 const userRoutes = require('./routes/users');
 const studentRoutes = require('./routes/students');
@@ -16,17 +16,31 @@ const chatbotRoutes = require('./routes/chatbot');
 
 const app = express();
 
+// Cấu hình multer
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 }, // Giới hạn 10MB
+});
+
 app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5173' }));
 app.use(express.json());
-app.use(fileUpload());
 app.use('/images_sv', express.static(path.join(__dirname, 'images_sv')));
 app.use('/exports', express.static(path.join(__dirname, 'Exports')));
+
+// Áp dụng multer cho route import grades
+app.use('/api/grades', (req, res, next) => {
+  if (req.path === '/import') {
+    upload.single('file')(req, res, next);
+  } else {
+    next();
+  }
+});
+app.use('/api/grades', gradeRoutes);
 
 app.use('/api/users', userRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/classes', classRoutes);
-app.use('/api/grades', gradeRoutes);
 app.use('/api/images', imageRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/chatbot', chatbotRoutes);

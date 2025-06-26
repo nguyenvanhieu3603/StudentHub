@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getStudents, getGradesByMaSV, getCourses } from '../services/api';
+import { getStudents, getGradesByMaSV, getCourses, getGPABySemester } from '../services/api';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
@@ -16,6 +16,7 @@ export default function StudentDetail() {
   const [loadingGrades, setLoadingGrades] = useState(true);
   const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0 });
   const [filter, setFilter] = useState({ maMonHoc: '', semester: '', chartSemester: '' });
+  const [gpa, setGpa] = useState({ gpa: 0, totalCredits: 0 });
 
   // Định nghĩa danh sách học kỳ từ HK1-2021 đến HK3-2025
   const semesters = Array.from({ length: 5 }, (_, i) => 2021 + i).flatMap(year =>
@@ -25,40 +26,47 @@ export default function StudentDetail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [subjectsResponse, studentResponse, gradesResponse] = await Promise.all([
-          getCourses({ limit: 1000 }),
+        const [subjectsResponse, studentResponse, gradesResponse, gpaResponse] = await Promise.all([
+          getCourses({ page: 1, limit: 1000 }), // Đảm bảo lấy tất cả môn học
           getStudents({ maSV }),
-          getGradesByMaSV({ maSV, maMonHoc: '', semester: '', page: 1, limit: 1000 }) // Lấy tất cả grades
+          getGradesByMaSV({ maSV, maMonHoc: '', semester: '', page: 1, limit: 1000 }),
+          getGPABySemester({ maSV }) // Lấy GPA từ backend
         ]);
-        setSubjects(subjectsResponse.data.courses);
+
+        // Kiểm tra và gán danh sách môn học
+        const courses = subjectsResponse.data.courses || [];
+        if (!courses.length) {
+          console.error('No courses found in response');
+        }
+        setSubjects(courses);
+
+        // Gán thông tin sinh viên
         if (studentResponse.data.students.length > 0) {
           setStudent(studentResponse.data.students[0]);
         } else {
           toast.error('Không tìm thấy sinh viên');
           navigate('/students');
+          return;
         }
-        const allGrades = gradesResponse.data.grades;
-        setGrades(allGrades.filter(g =>
+
+        // Xử lý điểm
+        const allGrades = gradesResponse.data.grades || [];
+        console.log('allGrades:', allGrades); // Debug
+
+        // Lọc các điểm hợp lệ
+        const validGrades = allGrades.filter(g => g.status === 0 && g.gradePoint != null);
+        setGrades(validGrades.filter(g =>
           (!filter.maMonHoc || g.maMonHoc === filter.maMonHoc) &&
           (!filter.semester || g.semester === filter.semester)
         ));
-        setPagination(prev => ({ ...prev, total: allGrades.length }));
+        setPagination(prev => ({ ...prev, total: validGrades.length }));
 
-        // Tính GPA tổng thể
-        if (allGrades.length > 0) {
-          const totalCredits = allGrades.reduce((sum, grade) => {
-            const subject = subjectsResponse.data.courses.find(s => s.maMonHoc === grade.maMonHoc);
-            return sum + (subject ? subject.tinChi : 0);
-          }, 0);
-          const weightedSum = allGrades.reduce((sum, grade) => {
-            const subject = subjectsResponse.data.courses.find(s => s.maMonHoc === grade.maMonHoc);
-            return sum + (grade.finalGrade * (subject ? subject.tinChi : 0));
-          }, 0);
-          const gpaValue = totalCredits > 0 ? weightedSum / totalCredits : 0;
-          setGpa({ gpa: gpaValue, totalCredits });
-        } else {
-          setGpa({ gpa: 0, totalCredits: 0 });
-        }
+        // Gán GPA và tổng tín chỉ từ API getGPABySemester
+        setGpa({
+          gpa: parseFloat(gpaResponse.data.gpa || 0).toFixed(2),
+          totalCredits: gpaResponse.data.totalCredits || 0
+        });
+
       } catch (error) {
         console.error('Fetch error:', error);
         toast.error('Không thể tải dữ liệu');
@@ -70,17 +78,14 @@ export default function StudentDetail() {
     fetchData();
   }, [maSV, filter.maMonHoc, filter.semester, navigate]);
 
-  const [gpa, setGpa] = useState({ gpa: 0, totalCredits: 0 });
-
   // Tính GPA theo học kỳ cho biểu đồ
   const calculateGpaBySemester = () => {
-    // Lọc danh sách học kỳ theo filter.chartSemester
-    const filteredSemesters = filter.chartSemester
-      ? [filter.chartSemester]
-      : semesters;
+    const filteredSemesters = filter.chartSemester ? [filter.chartSemester] : semesters;
 
     const gpaBySemester = filteredSemesters.map(semester => {
-      const semesterGrades = grades.filter(g => g.semester === semester && g.status === 0 && g.finalGrade != null);
+      const semesterGrades = grades.filter(
+        g => g.semester === semester && g.status === 0 && g.gradePoint != null
+      );
       if (semesterGrades.length === 0) return 0;
 
       const totalCredits = semesterGrades.reduce((sum, grade) => {
@@ -90,7 +95,7 @@ export default function StudentDetail() {
 
       const weightedSum = semesterGrades.reduce((sum, grade) => {
         const subject = subjects.find(s => s.maMonHoc === grade.maMonHoc);
-        return sum + (grade.finalGrade * (subject ? subject.tinChi : 0));
+        return sum + (grade.gradePoint * (subject ? subject.tinChi : 0));
       }, 0);
 
       return totalCredits > 0 ? (weightedSum / totalCredits).toFixed(2) : 0;
@@ -123,15 +128,15 @@ export default function StudentDetail() {
     scales: {
       y: {
         beginAtZero: true,
-        max: 10,
-        title: { display: true, text: 'GPA' }
+        max: 4,
+        title: { display: true, text: 'GPA (Hệ 4)' }
       },
       x: { title: { display: true, text: 'Học kỳ' } }
     },
     plugins: {
       legend: { position: 'top' },
-      title: { 
-        display: true, 
+      title: {
+        display: true,
         text: filter.chartSemester ? `GPA Học Kỳ ${filter.chartSemester}` : 'GPA Theo Học Kỳ'
       }
     },
@@ -218,7 +223,7 @@ export default function StudentDetail() {
       <div className="bg-white p-8 rounded-2xl shadow-md max-w-4xl transform transition-all hover:shadow-xl">
         <h2 className="text-2xl font-bold text-indigo-600 mb-6">Danh Sách Điểm</h2>
         <p className="text-gray-700 mb-4">
-          GPA trung bình {filter.semester ? `học kỳ ${filter.semester}` : 'toàn bộ'}: <strong>{typeof gpa.gpa === 'number' ? gpa.gpa.toFixed(2) : '0.00'}</strong> (Tổng tín chỉ: {gpa.totalCredits || 0})
+          GPA trung bình {filter.semester ? `học kỳ ${filter.semester}` : 'toàn bộ'}: <strong>{gpa.gpa}</strong> (Tổng tín chỉ: {gpa.totalCredits || 0})
         </p>
         <div className="mb-4 flex gap-4">
           <div className="flex-1">
@@ -268,6 +273,8 @@ export default function StudentDetail() {
                     <th className="p-3 text-left text-sm font-semibold">Điểm C</th>
                     <th className="p-3 text-left text-sm font-semibold">Điểm TK</th>
                     <th className="p-3 text-left text-sm font-semibold">Xếp Loại</th>
+                    <th className="p-3 text-left text-sm font-semibold">Xếp Loại Bằng Lời</th>
+                    <th className="p-3 text-left text-sm font-semibold">Điểm Hệ 4</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -283,6 +290,8 @@ export default function StudentDetail() {
                         <td className="p-3">{grade.diemC ?? '-'}</td>
                         <td className="p-3">{grade.finalGrade ?? '-'}</td>
                         <td className="p-3">{grade.letterGrade ?? '-'}</td>
+                        <td className="p-3">{grade.verbalGrade ?? '-'}</td>
+                        <td className="p-3">{grade.gradePoint ?? '-'}</td>
                       </tr>
                     );
                   })}

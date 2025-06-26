@@ -52,10 +52,10 @@ async function processExcelFile(fileData, headerMap, validateRow) {
     const row = data[i];
     const rowNumber = i + 1;
     try {
-      const item = validateRow(row, mappedHeaders, rowNumber);
-      if (item) validItems.push(item);
+      const item = await validateRow(row, mappedHeaders, rowNumber);
+      if (item) validItems.push(item); // Chỉ thêm nếu item không null
     } catch (err) {
-      errors.push(`Row ${rowNumber}: ${err.message}`);
+      errors.push(err.message);
     }
   }
 

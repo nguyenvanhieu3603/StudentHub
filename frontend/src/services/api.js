@@ -7,7 +7,6 @@ const api = axios.create({
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
-  if (!(config.data instanceof FormData)) config.headers['Content-Type'] = 'application/json';
   return config;
 });
 
@@ -50,7 +49,7 @@ export const getGradesByMaSV = data => api.post('/grades/getlistbymasv', data);
 export const insertGrade = data => api.post('/grades/insert', data);
 export const updateGrade = data => api.post('/grades/update', data);
 export const deleteGrade = data => api.post('/grades/delete', data);
-export const exportGrades = data => api.post('/grades/export', data);
+export const exportGrades = (data, config = {}) => api.post('/grades/export', data, { ...config, responseType: 'arraybuffer' });
 export const importGrades = data => api.post('/grades/import', data);
 export const getAverageByCourse = () => api.get('/grades/average-by-course');
 export const getGPABySemester = data => api.post('/grades/gpa-by-semester', data);

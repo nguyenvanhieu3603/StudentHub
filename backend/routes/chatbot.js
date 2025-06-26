@@ -2,11 +2,9 @@ const express = require('express');
 const { auth } = require('../middleware/auth');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const Student = require('../models/Student');
+const Grade = require('../models/Grade');
 const Course = require('../models/Course');
 const Class = require('../models/Class');
-const Grade = require('../models/Grade');
-const axios = require('axios');
-
 const router = express.Router();
 
 // Khởi tạo Gemini API
@@ -23,7 +21,7 @@ router.post('/', auth, async (req, res) => {
       return res.status(400).json({ message: 'Câu hỏi không hợp lệ' });
     }
 
-    // Prompt Gemini để phân tích nhiều intent, thêm intent 'help'
+    // Prompt Gemini để phân tích nhiều intent
     const prompt = `
       Bạn là chatbot quản lý sinh viên, trả lời bằng tiếng Việt với phong cách thân thiện như ChatGPT, sử dụng emoji khi phù hợp. 
       Hỗ trợ xử lý tiếng Việt không dấu (VD: "Nguyen Van A" tương đương "Nguyễn Văn A").
@@ -33,9 +31,9 @@ router.post('/', auth, async (req, res) => {
       Nếu câu hỏi thiếu thông tin (VD: "Tìm thông tin sinh viên"), yêu cầu bổ sung mà không đưa gợi ý.
       Trả về JSON hợp lệ với các trường:
       - intents: Mảng các intent, mỗi intent có:
-        - intent: Loại câu hỏi ('greet', 'help', 'get_student_class', 'get_student_grade', 'get_class_info', 'count_students_by_name', 'export_data', 'view_student_detail', 'list_students_by_name', 'get_course_average', 'list_students_by_class', 'add_student', 'add_class', 'add_grade', 'get_class_size', hoặc 'invalid')
+        - intent: Loại câu hỏi ('greet', 'help', 'view_student_detail', hoặc 'invalid')
         - entities: Đối tượng chứa thông tin chiết xuất (tenSV, maSV, tenMonHoc, tenLop, semester, maLop, diemGK, diemCK, diemCC, khoa, khoaHoc, tinChi)
-        - text: Câu trả lời cho intent này, dùng emoji cho 'view_student_detail' (📛, 🆔, 🏫, 🎓, 📈, 📊, ⭐) và 'help' (📍, ✏️, 📊, 👥, 📈, 🎓, ⭐)
+        - text: Câu trả lời cho intent này, dùng emoji cho 'view_student_detail' (📛, 🆔, 🏫, 🎓, 📊, ⭐) và 'help' (📍, ✏️, 📊, 👥, 📈, 🎓, ⭐)
       - text: Câu trả lời tổng hợp bằng tiếng Việt tự nhiên
       Đảm bảo JSON hợp lệ, sử dụng dấu nháy kép ("), không chứa bình luận. Nếu câu hỏi không hợp lệ, trả về intent 'invalid'.
       Ví dụ lời chào:
@@ -66,10 +64,10 @@ router.post('/', auth, async (req, res) => {
           {
             "intent": "view_student_detail",
             "entities": { "maSV": "SV001" },
-            "text": "📛 Họ và tên: Nguyễn Văn An\n🆔 Mã sinh viên: SV001\n🏫 Lớp: K22CNPM-A\n🎓 Khoa: Y dược\n📈 Trạng thái học tập: Đang học\n📊 Tổng số tín chỉ tích lũy: 21\n⭐ Điểm trung bình tích lũy (GPA): 7.81"
+            "text": "Vui lòng cung cấp thông tin từ cơ sở dữ liệu"
           }
         ],
-        "text": "📛 Họ và tên: Nguyễn Văn An\n🆔 Mã sinh viên: SV001\n🏫 Lớp: K22CNPM-A\n🎓 Khoa: Y dược\n📈 Trạng thái học tập: Đang học\n📊 Tổng số tín chỉ tích lũy: 21\n⭐ Điểm trung bình tích lũy (GPA): 7.81"
+        "text": "Vui lòng cung cấp thông tin từ cơ sở dữ liệu"
       }
       Ví dụ thiếu thông tin:
       {
@@ -104,7 +102,6 @@ router.post('/', auth, async (req, res) => {
 
     let response;
     const rawText = result.response.text();
-    console.log('Gemini raw response:', rawText);
 
     try {
       const sanitizedText = rawText.trim().replace(/^```json\n|\n```$/g, '');
@@ -117,9 +114,40 @@ router.post('/', auth, async (req, res) => {
       return res.status(500).json({ message: 'Lỗi phân tích phản hồi từ Gemini: Phản hồi không đúng định dạng JSON' });
     }
 
-    let text = response.text || 'Không hiểu câu hỏi. Vui lòng hỏi lại!';
+    // Xử lý intent view_student_detail
+    if (response.intents && response.intents[0].intent === 'view_student_detail') {
+      const { maSV } = response.intents[0].entities;
+      if (!maSV) {
+        response.text = 'Vui lòng cung cấp mã sinh viên.';
+      } else {
+        // Truy vấn thông tin sinh viên
+        const student = await Student.findOne({ maSV }).lean();
+        if (!student) {
+          response.text = `Không tìm thấy sinh viên với mã ${maSV}.`;
+        } else {
+          // Truy vấn điểm số
+          const grades = await Grade.find({ maSV }).lean();
+          // Truy vấn tất cả môn học liên quan
+          const courseIds = grades.map(grade => grade.maMonHoc);
+          const courses = await Course.find({ maMonHoc: { $in: courseIds } }).lean();
+          // Tính tổng tín chỉ
+          const totalCredits = grades.reduce((sum, grade) => {
+            const course = courses.find(c => c.maMonHoc === grade.maMonHoc);
+            return sum + (course ? course.tinChi : 0);
+          }, 0);
+          // Tính GPA
+          const gpa = grades.length
+            ? (grades.reduce((sum, grade) => sum + (grade.finalGrade || 0), 0) / grades.length).toFixed(2)
+            : 'Chưa có điểm';
+          // Truy vấn thông tin lớp
+          const classInfo = await Class.findOne({ tenLop: student.lop }).lean();
+          const className = classInfo ? classInfo.tenLop : student.lop;
+          response.text = `📛 Họ và tên: ${student.tenSV}\n🆔 Mã sinh viên: ${student.maSV}\n🏫 Lớp: ${className}\n🎓 Khoa: ${student.khoa}\n📊 Tổng số tín chỉ tích lũy: ${totalCredits}\n⭐ Điểm trung bình tích lũy (GPA): ${gpa}`;
+        }
+      }
+    }
 
-    res.json({ text });
+    res.json({ text: response.text });
   } catch (error) {
     console.error('Chatbot error:', error.message, error.stack);
     res.status(500).json({ message: error.message || 'Lỗi khi xử lý câu hỏi' });

@@ -10,7 +10,9 @@ const gradeSchema = new mongoose.Schema({
   diemC: { type: Number, min: 0, max: 10, default: null },
   status: { type: Number, enum: [0, 1], default: 0 },
   finalGrade: { type: Number, min: 0, max: 10, default: null },
-  letterGrade: { type: String, enum: ['A', 'B', 'C', 'D', 'F', null], default: null },
+  letterGrade: { type: String, enum: ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F', null], default: null },
+  verbalGrade: { type: String, enum: ['Xuất sắc', 'Giỏi', 'Khá', 'Trung bình', 'Kém', null], default: null },
+  gradePoint: { type: Number, min: 0, max: 4, default: null },
   createdAt: { type: Date, default: Date.now },
 });
 
